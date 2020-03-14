@@ -4,26 +4,37 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelButton extends JPanel {
-
-    private JButton creer,editer,marquer,dupliquer,supprimer;
+    private JPanel panel;
 
 
     PanelButton(){
-        creer = new JButton("Créer");
-        editer = new JButton("Editer");
-        marquer = new JButton("Marquer");
-        dupliquer = new JButton("Dupliquer");
-        supprimer = new JButton("Supprimer");
-        creer.setAlignmentX(Component.LEFT_ALIGNMENT);
-        editer.setAlignmentX(Component.LEFT_ALIGNMENT);
-        marquer.setAlignmentX(Component.LEFT_ALIGNMENT);
-        dupliquer.setAlignmentX(Component.LEFT_ALIGNMENT);
-        supprimer.setAlignmentX(Component.LEFT_ALIGNMENT);
-        this.add(creer);
-        this.add(editer);
-        this.add(marquer);
-        this.add(dupliquer);
-        this.add(supprimer);
+    	setLayout(null);
+    	
+    	JPanel panel_1 = new JPanel();
+    	panel_1.setBackground(Color.DARK_GRAY);
+    	panel_1.setBounds(0, 0, 200, 700);
+    	add(panel_1);
+    	panel_1.setLayout(null);
+    	
+    	JButton btnCreer = new JButton("Creer");
+    	btnCreer.setBounds(12, 70, 176, 35);
+    	panel_1.add(btnCreer);
+    	
+    	JButton btnEditer = new JButton("Editer");
+    	btnEditer.setBounds(12, 140, 176, 35);
+    	panel_1.add(btnEditer);
+    	
+    	JButton btnDupliquer = new JButton("Dupliquer");
+    	btnDupliquer.setBounds(12, 280, 176, 35);
+    	panel_1.add(btnDupliquer);
+    	
+    	JButton btnMarquer = new JButton("Marquer");
+    	btnMarquer.setBounds(12, 210, 176, 35);
+    	panel_1.add(btnMarquer);
+    	
+    	JButton btnSupprimer = new JButton("Supprimer");
+    	btnSupprimer.setBounds(12, 350, 176, 35);
+    	panel_1.add(btnSupprimer);
 
 
     }

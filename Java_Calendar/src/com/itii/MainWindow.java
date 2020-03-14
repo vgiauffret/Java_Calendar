@@ -18,12 +18,14 @@ public class MainWindow extends JFrame {
 
 
     private void initialize() {
-        this.setSize(1000, 1000);
+        this.setSize(1400, 700);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(new GridLayout(2,1));
+        this.setLocationRelativeTo(null);
         mMainPanel = new MainPanel();
+        mMainPanel.setBounds(0, 0, 1190, 637);
         panelbutton = new PanelButton();
+        panelbutton.setBounds(1188, 0, 200, 637);
         fichier = new JMenu("Fichier");
         edition = new JMenu("Edition");
         creer = new JMenuItem("Créer");
@@ -40,9 +42,10 @@ public class MainWindow extends JFrame {
         mainMenuBar.add(aide);
 
         this.setJMenuBar(mainMenuBar);
-        this.add(mMainPanel);
+        getContentPane().setLayout(null);
+        getContentPane().add(mMainPanel);
 
-        this.add(panelbutton);
+        getContentPane().add(panelbutton);
 
 
         this.validate();
