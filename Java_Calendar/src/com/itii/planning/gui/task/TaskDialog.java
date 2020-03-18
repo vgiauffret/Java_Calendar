@@ -63,7 +63,7 @@ public class TaskDialog extends JDialog {
 				cal.get(Calendar.DAY_OF_WEEK));
 				String datePattern = "dd-MM-yyyy";
 				calendar = new JDatePicker(model, datePattern);
-				calendar.setBounds(326, 69, 86, 40);
+				calendar.setBounds(326, 69, 86, 41);
 		}
 		return calendar;
 	}
