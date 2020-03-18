@@ -19,7 +19,10 @@ public class TaskDialog extends JDialog {
 
 	public TaskDialog() {
     	this.setTitle("Nouvelle Tâche");
+		this.setSize(600, 600);
+        this.setVisible(true);
 		getContentPane().setLayout(null);
+
 		
 		JLabel lblTache = new JLabel("Nom de la tâche : ");
 		lblTache.setBounds(12, 31, 150, 15);
