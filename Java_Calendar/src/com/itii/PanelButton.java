@@ -53,7 +53,6 @@ public class PanelButton extends JPanel {
     		public void actionPerformed(ActionEvent arg0) {
     			// TODO Auto-generated method stub
     			new TaskDialog();
-    			System.out.print("C");
     		}
     	});
     }
