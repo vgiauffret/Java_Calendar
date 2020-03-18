@@ -12,12 +12,13 @@ public class MainWindow extends JFrame {
     private JMenu fichier,edition,vue,aide ;
     private PanelButton panelbutton;
     private MainWindow() {
-        initialize();
+    initialize();
 
     }
 
 
     private void initialize() {
+    	this.setTitle("Mon calendrier");
         this.setSize(1400, 700);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
