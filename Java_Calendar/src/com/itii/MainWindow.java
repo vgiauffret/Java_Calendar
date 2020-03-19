@@ -21,6 +21,7 @@ public class MainWindow extends JFrame {
     private ImageIcon logo;
     private ListPanel listpanel;
     private MonthPanel monthPanel;
+    private WeekPanel weekPanel;
     
     private MainWindow() {
     initialize();
@@ -62,9 +63,13 @@ public class MainWindow extends JFrame {
         listpanel = new ListPanel();
     	listpanel.setBounds(0, 30, 1190, 637);
     	this.add(listpanel);
+    	weekPanel = new WeekPanel();
+    	weekPanel.setBounds(0, 30, 1190, 637);
+    	this.add(weekPanel);
     	monthPanel = new MonthPanel();
     	monthPanel.setBounds(0, 30, 1190, 637);
     	this.add(monthPanel);
+
         
         creer.addActionListener(new ActionListener() {
 			
@@ -116,7 +121,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				monthPanel.setVisible(true);
-                //weekpanel.setVisible(false);
+                weekPanel.setVisible(false);
                 listpanel.setVisible(false); 				
 			}
 		});
@@ -126,7 +131,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				monthPanel.setVisible(false);
-                //weekpanel.setVisible(true);
+                weekPanel.setVisible(true);
                 listpanel.setVisible(false); 				
 			}
 		});
@@ -137,8 +142,8 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				monthPanel.setVisible(false);
-                //weekpanel.setVisible(false);
-                listpanel.setVisible(true); 
+                weekPanel.setVisible(false);
+                listpanel.setVisible(true);                 
 			}
 		});
         

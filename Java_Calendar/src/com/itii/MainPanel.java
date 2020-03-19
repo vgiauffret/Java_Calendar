@@ -14,6 +14,7 @@ public class MainPanel extends JPanel {
     private JComboBox comboBox;
     private ListPanel listpanel;
     private MonthPanel monthPanel;
+    private WeekPanel weekPanel;
     
     
     MainPanel(){
@@ -33,10 +34,15 @@ public class MainPanel extends JPanel {
     	listpanel = new ListPanel();
     	listpanel.setBounds(0, 30, 1190, 637);
     	panel.add(listpanel);
+    	weekPanel = new WeekPanel();
+    	weekPanel.setBounds(0, 30, 1190, 637);
+    	panel.add(weekPanel);
     	monthPanel = new MonthPanel();
     	monthPanel.setBounds(0, 30, 1190, 637);
     	panel.add(monthPanel);
-    	//monthPanel.setVisible(true);
+    	monthPanel.setVisible(true);
+    	
+    	
     	    	
 
     	ActionListener cbActionListener = new ActionListener() {//add actionlistner to listen for change
@@ -47,24 +53,19 @@ public class MainPanel extends JPanel {
 
                 switch (s) {//check for a match
                     case "Month":
-                        System.out.println("Month selected");
                     	monthPanel.setVisible(true);
-                        //weekpanel.setVisible(false);
+                        weekPanel.setVisible(false);
                         listpanel.setVisible(false); 
                         break;
                     case "Week":
-                        System.out.println("Week selected");
                         monthPanel.setVisible(false);
-                        //weekpanel.setVisible(true);
+                        weekPanel.setVisible(true);
                         listpanel.setVisible(false); 
                         break;
                     case "List":
-                        System.out.println("List selected");
                         monthPanel.setVisible(false);
-                        //weekpanel.setVisible(false);
-                        listpanel.setVisible(true); 
-                        
-                        
+                        weekPanel.setVisible(false);
+                        listpanel.setVisible(true);                      
                         break;
                     default:
                         System.out.println("No match selected");
