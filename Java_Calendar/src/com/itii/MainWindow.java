@@ -1,7 +1,12 @@
 package com.itii;
 
 import javax.swing.*;
+
+import com.itii.planning.gui.task.TaskDialog;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainWindow extends JFrame {
 
@@ -11,6 +16,8 @@ public class MainWindow extends JFrame {
     private JMenuItem creer, editer , marquer, dupliquer , supprimer;
     private JMenu fichier,edition,vue,aide ;
     private PanelButton panelbutton;
+    private JMenuItem Month,Week,List;
+    private ListPanel listPanel;
     private MainWindow() {
     initialize();
 
@@ -27,6 +34,7 @@ public class MainWindow extends JFrame {
         mMainPanel.setBounds(0, 0, 1190, 637);
         panelbutton = new PanelButton();
         panelbutton.setBounds(1188, 0, 200, 637);
+        listPanel = new ListPanel();
         fichier = new JMenu("Fichier");
         edition = new JMenu("Edition");
         creer = new JMenuItem("Créer");
@@ -40,12 +48,94 @@ public class MainWindow extends JFrame {
         mainMenuBar.add(fichier);
         mainMenuBar.add(edition);
         mainMenuBar.add(vue);
-        mainMenuBar.add(aide);
+        
+        Month = new JMenuItem("Month");
+        Week = new JMenuItem("Week");
+        List = new JMenuItem("List");
+        vue.add(Month);vue.add(Week);vue.add(List);
+        
+        creer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new TaskDialog();
+			}
+		});
+        
+        editer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        
+        marquer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        
+        dupliquer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        
+        supprimer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        
+        Month.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        
+        Week.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        
+        List.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				//Add ListPanel
+				getContentPane().validate();
+				getContentPane().repaint();
+			}
+		});
+        
+       
 
+        
+        mainMenuBar.add(aide);
+        
         this.setJMenuBar(mainMenuBar);
         getContentPane().setLayout(null);
         getContentPane().add(mMainPanel);
-
         getContentPane().add(panelbutton);
 
 

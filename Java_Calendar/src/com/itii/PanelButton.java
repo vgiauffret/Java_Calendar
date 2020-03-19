@@ -9,12 +9,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelButton extends JPanel {
-    private JPanel panel;
     
-    private JButton btnCreer;
+    private JButton btnCreer,btnEditer,btnDupliquer,btnMarquer,btnSupprimer;
     public JButton getCreerBtn()
     {
     	return btnCreer;
+    }
+    public JButton getEditerBtn()
+    {
+    	return btnEditer;
+    }
+    public JButton getDupliquerBtn()
+    {
+    	return btnDupliquer;
+    }
+    public JButton getMarquerBtn()
+    {
+    	return btnMarquer;
+    }
+    public JButton getSupprimerBtn()
+    {
+    	return btnSupprimer;
     }
 
     PanelButton(){
@@ -30,19 +45,19 @@ public class PanelButton extends JPanel {
     	btnCreer.setBounds(12, 70, 176, 35);
     	panel_button.add(btnCreer);
     	
-    	JButton btnEditer = new JButton("Editer");
+    	btnEditer = new JButton("Editer");
     	btnEditer.setBounds(12, 140, 176, 35);
     	panel_button.add(btnEditer);
     	
-    	JButton btnDupliquer = new JButton("Dupliquer");
+    	btnDupliquer = new JButton("Dupliquer");
     	btnDupliquer.setBounds(12, 280, 176, 35);
     	panel_button.add(btnDupliquer);
     	
-    	JButton btnMarquer = new JButton("Marquer");
+    	btnMarquer = new JButton("Marquer");
     	btnMarquer.setBounds(12, 210, 176, 35);
     	panel_button.add(btnMarquer);
     	
-    	JButton btnSupprimer = new JButton("Supprimer");
+    	btnSupprimer = new JButton("Supprimer");
     	btnSupprimer.setBounds(12, 350, 176, 35);
     	panel_button.add(btnSupprimer);
     	
@@ -55,6 +70,44 @@ public class PanelButton extends JPanel {
     			new TaskDialog();
     		}
     	});
+    	
+    	this.getEditerBtn().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+    	
+    	this.getDupliquerBtn().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+    	
+    	this.getMarquerBtn().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+    	
+    	this.getSupprimerBtn().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+    	
+    	
     }
 
 }

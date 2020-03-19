@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import org.jdatepicker.JDatePicker;
 import org.jdatepicker.UtilDateModel;
+import javax.swing.JButton;
 
 public class TaskDialog extends JDialog {
 	
@@ -19,7 +20,7 @@ public class TaskDialog extends JDialog {
 
 	public TaskDialog() {
     	this.setTitle("Nouvelle Tâche");
-		this.setSize(600, 600);
+    	this.setBounds(600, 400, 450, 350);
         this.setVisible(true);
 		getContentPane().setLayout(null);
 
@@ -47,11 +48,19 @@ public class TaskDialog extends JDialog {
 		txtDate.setColumns(10);
 		
 		txtDetails = new JTextField();
-		txtDetails.setBounds(94, 109, 189, 149);
+		txtDetails.setBounds(94, 109, 215, 149);
 		getContentPane().add(txtDetails);
 		txtDetails.setColumns(10);
 		
 		getContentPane().add(getCalendar());
+		
+		JButton btnOk = new JButton("Ok");
+		btnOk.setBounds(321, 269, 117, 25);
+		getContentPane().add(btnOk);
+		
+		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.setBounds(180, 269, 117, 25);
+		getContentPane().add(btnAnnuler);
 		
 	}
 	
@@ -66,7 +75,7 @@ public class TaskDialog extends JDialog {
 				cal.get(Calendar.DAY_OF_WEEK));
 				String datePattern = "dd-MM-yyyy";
 				calendar = new JDatePicker(model, datePattern);
-				calendar.setBounds(326, 69, 86, 41);
+				calendar.setBounds(321, 69, 86, 41);
 		}
 		return calendar;
 	}
@@ -80,6 +89,4 @@ public class TaskDialog extends JDialog {
 	{
 		return getCalendar().getFormattedTextField().getText();
 	}
-	
-	
 }
