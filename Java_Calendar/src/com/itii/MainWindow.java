@@ -7,6 +7,7 @@ import com.itii.planning.gui.task.TaskDialog;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class MainWindow extends JFrame {
 
@@ -17,7 +18,7 @@ public class MainWindow extends JFrame {
     private JMenu fichier,edition,vue,aide ;
     private PanelButton panelbutton;
     private JMenuItem Month,Week,List;
-    private ListPanel listPanel;
+    private ImageIcon logo;
     private MainWindow() {
     initialize();
 
@@ -25,6 +26,7 @@ public class MainWindow extends JFrame {
 
 
     private void initialize() {
+    
     	this.setTitle("Mon calendrier");
         this.setSize(1400, 700);
         this.setVisible(true);
@@ -34,7 +36,7 @@ public class MainWindow extends JFrame {
         mMainPanel.setBounds(0, 0, 1190, 637);
         panelbutton = new PanelButton();
         panelbutton.setBounds(1188, 0, 200, 637);
-        listPanel = new ListPanel();
+        new ListPanel();
         fichier = new JMenu("Fichier");
         edition = new JMenu("Edition");
         creer = new JMenuItem("Créer");

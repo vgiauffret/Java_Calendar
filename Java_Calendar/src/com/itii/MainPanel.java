@@ -12,14 +12,15 @@ public class MainPanel extends JPanel {
     private String[] choiceList;
     JComboBox<String> mPanelList;
     private JComboBox comboBox;
-    private Component listPanel;
+    private ListPanel listpanel;
+    
     
     MainPanel(){
     	setLayout(null);
     	this.setSize(1190, 640);
         choiceList = new String[] {"Month","Week","List"};
-    	
-    	
+    	listpanel = new ListPanel();
+    	this.add(listpanel);
     	JPanel panel = new JPanel();
     	panel.setBounds(12, 0, 1190, 640);
     	add(panel);
@@ -31,6 +32,7 @@ public class MainPanel extends JPanel {
     	JPanel panelView = new JPanel();
     	panelView.setBounds(0, 58, 1178, 570);
     	panel.add(panelView);
+    	
     	
 
     	ActionListener cbActionListener = new ActionListener() {//add actionlistner to listen for change
@@ -50,13 +52,17 @@ public class MainPanel extends JPanel {
                         break;
                     case "List":
                         System.out.println("List selected");
-                        //Affiche Pannel List
+                        listpanel.setVisible(true);
+                       
+                       
+                        
                         break;
                     default:
                         System.out.println("No match selected");
                         break;
                 }
             }
+
         };
         comboBox.addActionListener(cbActionListener);
 
