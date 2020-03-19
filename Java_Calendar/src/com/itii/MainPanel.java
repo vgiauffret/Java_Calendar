@@ -36,7 +36,7 @@ public class MainPanel extends JPanel {
     	monthPanel = new MonthPanel();
     	monthPanel.setBounds(0, 30, 1190, 637);
     	panel.add(monthPanel);
-    	monthPanel.setVisible(true);
+    	//monthPanel.setVisible(true);
     	    	
 
     	ActionListener cbActionListener = new ActionListener() {//add actionlistner to listen for change

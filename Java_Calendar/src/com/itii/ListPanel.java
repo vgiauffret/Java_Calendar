@@ -8,8 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 
 public class ListPanel extends JPanel {
-	
-	public 	JPanel ListPanel;
 	private JTable table;
 	private DefaultTableModel tableModel; 
 	
