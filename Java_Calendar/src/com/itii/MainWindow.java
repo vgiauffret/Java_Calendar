@@ -19,6 +19,9 @@ public class MainWindow extends JFrame {
     private PanelButton panelbutton;
     private JMenuItem Month,Week,List;
     private ImageIcon logo;
+    private ListPanel listpanel;
+    private MonthPanel monthPanel;
+    
     private MainWindow() {
     initialize();
 
@@ -55,6 +58,13 @@ public class MainWindow extends JFrame {
         Week = new JMenuItem("Week");
         List = new JMenuItem("List");
         vue.add(Month);vue.add(Week);vue.add(List);
+        
+        listpanel = new ListPanel();
+    	listpanel.setBounds(0, 30, 1190, 637);
+    	this.add(listpanel);
+    	monthPanel = new MonthPanel();
+    	monthPanel.setBounds(0, 30, 1190, 637);
+    	this.add(monthPanel);
         
         creer.addActionListener(new ActionListener() {
 			
@@ -105,8 +115,9 @@ public class MainWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				monthPanel.setVisible(true);
+                //weekpanel.setVisible(false);
+                listpanel.setVisible(false); 				
 			}
 		});
         
@@ -114,8 +125,9 @@ public class MainWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				monthPanel.setVisible(false);
+                //weekpanel.setVisible(true);
+                listpanel.setVisible(false); 				
 			}
 		});
         
@@ -124,9 +136,9 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				//Add ListPanel
-				getContentPane().validate();
-				getContentPane().repaint();
+				monthPanel.setVisible(false);
+                //weekpanel.setVisible(false);
+                listpanel.setVisible(true); 
 			}
 		});
         

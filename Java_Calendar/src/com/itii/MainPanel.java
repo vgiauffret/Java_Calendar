@@ -13,27 +13,31 @@ public class MainPanel extends JPanel {
     JComboBox<String> mPanelList;
     private JComboBox comboBox;
     private ListPanel listpanel;
+    private MonthPanel monthPanel;
     
     
     MainPanel(){
-    	setLayout(null);
     	this.setSize(1190, 640);
+    	
+
         choiceList = new String[] {"Month","Week","List"};
-    	listpanel = new ListPanel();
-    	this.add(listpanel);
+    	setLayout(null);
     	JPanel panel = new JPanel();
-    	panel.setBounds(12, 0, 1190, 640);
+    	panel.setBounds(12, 0, 1166, 628);
     	add(panel);
     	panel.setLayout(null);
     	comboBox = new JComboBox<Object>(choiceList);
-    	comboBox.setBounds(522, 22, 141, 24);
+    	comboBox.setBounds(524, 12, 141, 24);
     	panel.add(comboBox);
     	
-    	JPanel panelView = new JPanel();
-    	panelView.setBounds(0, 58, 1178, 570);
-    	panel.add(panelView);
-    	
-    	
+    	listpanel = new ListPanel();
+    	listpanel.setBounds(0, 30, 1190, 637);
+    	panel.add(listpanel);
+    	monthPanel = new MonthPanel();
+    	monthPanel.setBounds(0, 30, 1190, 637);
+    	panel.add(monthPanel);
+    	monthPanel.setVisible(true);
+    	    	
 
     	ActionListener cbActionListener = new ActionListener() {//add actionlistner to listen for change
             @Override
@@ -44,17 +48,22 @@ public class MainPanel extends JPanel {
                 switch (s) {//check for a match
                     case "Month":
                         System.out.println("Month selected");
-                        //Affiche Pannel Month
+                    	monthPanel.setVisible(true);
+                        //weekpanel.setVisible(false);
+                        listpanel.setVisible(false); 
                         break;
                     case "Week":
                         System.out.println("Week selected");
-                        //Affiche Pannel Week
+                        monthPanel.setVisible(false);
+                        //weekpanel.setVisible(true);
+                        listpanel.setVisible(false); 
                         break;
                     case "List":
                         System.out.println("List selected");
-                        listpanel.setVisible(true);
-                       
-                       
+                        monthPanel.setVisible(false);
+                        //weekpanel.setVisible(false);
+                        listpanel.setVisible(true); 
+                        
                         
                         break;
                     default:
@@ -64,7 +73,8 @@ public class MainPanel extends JPanel {
             }
 
         };
-        comboBox.addActionListener(cbActionListener);
+    	comboBox.addActionListener(cbActionListener);
+
 
         
     }
