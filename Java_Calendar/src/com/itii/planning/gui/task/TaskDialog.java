@@ -23,7 +23,6 @@ import javax.swing.JButton;
 public class TaskDialog extends JDialog {
 	
 	private JTextField txtNomTache;
-	private JTextField txtDate;
 	private JTextField txtDetails;
 	private JDatePicker calendar;
 	private Connexion databaseConn;
@@ -54,13 +53,8 @@ public class TaskDialog extends JDialog {
 		getContentPane().add(txtNomTache);
 		txtNomTache.setColumns(10);
 		
-		txtDate = new JTextField();
-		txtDate.setBounds(169, 67, 114, 19);
-		getContentPane().add(txtDate);
-		txtDate.setColumns(10);
-		
 		txtDetails = new JTextField();
-		txtDetails.setBounds(94, 109, 215, 149);
+		txtDetails.setBounds(94, 109, 318, 149);
 		getContentPane().add(txtDetails);
 		txtDetails.setColumns(10);
 		
@@ -74,28 +68,6 @@ public class TaskDialog extends JDialog {
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(180, 269, 117, 25);
 		getContentPane().add(btnAnnuler);
-		
-		
-		txtDate.addKeyListener(new KeyListener() {
-			
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				btnOk.setEnabled(true);
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		
 		
 		txtNomTache.addKeyListener(new KeyListener() {
@@ -144,12 +116,12 @@ public class TaskDialog extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				try {
+				/*try {
 					databaseConn.addTask(databaseConn.getnomTache(), databaseConn.getdateDue(), databaseConn.getdetails(), "false");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 			}
 		});
 		
@@ -168,7 +140,7 @@ public class TaskDialog extends JDialog {
 				cal.get(Calendar.DAY_OF_WEEK));
 				String datePattern = "dd-MM-yyyy";
 				calendar = new JDatePicker(model, datePattern);
-				calendar.setBounds(321, 69, 86, 41);
+				calendar.setBounds(169, 69, 191, 41);
 		}
 		return calendar;
 	}
