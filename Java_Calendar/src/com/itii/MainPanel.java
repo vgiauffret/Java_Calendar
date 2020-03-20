@@ -57,13 +57,11 @@ public class MainPanel extends JPanel {
                     	monthPanel.setVisible(true);
                         weekPanel.setVisible(false);
                         listpanel.setVisible(false); 
-                        
                         break;
                     case "Week":
                         monthPanel.setVisible(false);
                         weekPanel.setVisible(true);
                         listpanel.setVisible(false); 
-                        
                         break;
                     case "List":
                         monthPanel.setVisible(false);
