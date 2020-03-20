@@ -19,11 +19,17 @@ public class Connexion {
 	private static final String URL = "jdbc:sqlite:database/planning.db";
     private Connection connection = null;
 	Statement statement = null;
+	private String nomTache;
+	private String details;
+	
 	
 	public Connexion() {
 		//this.createTable();
 	}
 	
+	public String getnomTache() {
+		return this.nomTache;
+	}
 	
 	public void createDatabase() {
 		
