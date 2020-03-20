@@ -37,7 +37,7 @@ public class MonthPanel extends JDatePanel {
 	{
 		super(calendarModel);
 		jdp = this;
-		
+		jdp.setVisible(false);
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

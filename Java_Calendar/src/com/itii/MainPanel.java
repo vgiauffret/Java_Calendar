@@ -42,7 +42,7 @@ public class MainPanel extends JPanel {
     	weekPanel.setBounds(0, 30, 1190, 637);
     	panel.add(weekPanel);
     	monthPanel = new MonthPanel();
-    	monthPanel.setBounds(0, 30, 1190, 637);
+    	monthPanel.setBounds(100, 50, 1000, 600);
     	panel.add(monthPanel);
     	monthPanel.setVisible(true);
     	
@@ -60,25 +60,16 @@ public class MainPanel extends JPanel {
                     	monthPanel.setVisible(true);
                         weekPanel.setVisible(false);
                         listpanel.setVisible(false); 
-                        test.panel.updateUI();
-                        test.panel.validate();
-                        test.panel.repaint();
                         break;
                     case "Week":
                         monthPanel.setVisible(false);
                         weekPanel.setVisible(true);
                         listpanel.setVisible(false); 
-                        test.panel.updateUI();
-                        test.panel.validate();
-                        test.panel.repaint();
                         break;
                     case "List":
                         monthPanel.setVisible(false);
                         weekPanel.setVisible(false);
                         listpanel.setVisible(true);  
-                        test.panel.updateUI();
-                        test.panel.validate();
-                        test.panel.repaint();
                         break;
                     default:
                         System.out.println("No match selected");

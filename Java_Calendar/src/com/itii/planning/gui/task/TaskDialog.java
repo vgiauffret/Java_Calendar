@@ -121,7 +121,7 @@ public class TaskDialog extends JDialog {
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 			}
 		});
 		

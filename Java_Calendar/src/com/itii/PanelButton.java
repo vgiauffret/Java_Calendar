@@ -7,9 +7,12 @@ import com.itii.planning.gui.task.TaskDialog;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PanelButton extends JPanel {
     
+	JLabel lblDateDuJour;
     private JButton btnCreer,btnEditer,btnDupliquer,btnMarquer,btnSupprimer;
     public JButton getCreerBtn()
     {
@@ -60,6 +63,12 @@ public class PanelButton extends JPanel {
     	btnSupprimer = new JButton("Supprimer");
     	btnSupprimer.setBounds(12, 350, 176, 35);
     	panel_button.add(btnSupprimer);
+    	
+    	lblDateDuJour = new JLabel();
+    	lblDateDuJour.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+    	lblDateDuJour.setForeground(Color.WHITE);
+    	lblDateDuJour.setBounds(20, 562, 176, 35);
+    	panel_button.add(lblDateDuJour);
     	
     	
     	this.getCreerBtn().addActionListener(new ActionListener() {
