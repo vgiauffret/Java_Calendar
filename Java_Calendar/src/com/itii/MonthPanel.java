@@ -8,6 +8,8 @@ import javax.swing.table.DefaultTableModel;
 import org.jdatepicker.JDatePanel;
 import org.jdatepicker.UtilCalendarModel;
 
+import com.itii.planning.gui.task.TaskDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -28,6 +30,7 @@ public class MonthPanel extends JDatePanel {
 	Calendar cal;
 	Locale locale;
 	JDatePanel jdp;
+	DialogTask dialogTask;
 	
 	static UtilCalendarModel calendarModel = new UtilCalendarModel();
 
@@ -37,11 +40,12 @@ public class MonthPanel extends JDatePanel {
 	{
 		super(calendarModel);
 		jdp = this;
-		
+		jdp.setVisible(false);
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(""+ jdp.getModel().getDay());
+				dialogTask  = new DialogTask();
 			}
 		});
 		

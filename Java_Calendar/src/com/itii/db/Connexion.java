@@ -41,6 +41,18 @@ public class Connexion {
 		
 	}
 	
+	public void setnomTache(String nomtache) {
+		this.nomTache = nomtache;
+	}
+	
+	public void setdetails(String detail) {
+		this.details = detail;
+	}
+	
+	public void setDate(String date) {
+		this.dateDue = date;
+	}
+	
 	public void createDatabase() {
 		
 		  String url = URL;
@@ -75,6 +87,8 @@ public class Connexion {
 		
 		
 }
+	
+	
 	
 	public void addTask(String taskName, String date, String description,String state ) throws SQLException {
 	     
@@ -190,6 +204,8 @@ public class Connexion {
 		
 		
 	}
+	
+	
 	
 	public void deleteAll() {
 		

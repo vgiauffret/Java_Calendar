@@ -117,11 +117,15 @@ public class TaskDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					
+					databaseConn.setnomTache(txtNomTache.getText());
+					databaseConn.setdetails(txtDetails.getText());
+					databaseConn.setDate(getDate());
 					databaseConn.addTask(databaseConn.getnomTache(), databaseConn.getdate(), databaseConn.getdetails(), "false");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 			}
 		});
 		

@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 
 public class WeekPanel extends JPanel{
 	private JTable table;
+	private DialogTask dialogTask;
 	
 	
 	public WeekPanel()
