@@ -142,6 +142,10 @@ public class MonthPanel extends JPanel {
     	button_29.setBounds(471, 495, 100, 100);
     	this.add(button_29);
     	
+    	JLabel lblMois = new JLabel("%Mois");
+    	lblMois.setBounds(247, 12, 70, 15);
+    	add(lblMois);
+    	
   
     	
 	}

@@ -120,9 +120,8 @@ public class MainWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				monthPanel.setVisible(true);
-                weekPanel.setVisible(false);
-                listpanel.setVisible(false); 				
+				mMainPanel.comboBox.setSelectedItem("Month");
+				
 			}
 		});
         
@@ -130,9 +129,7 @@ public class MainWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				monthPanel.setVisible(false);
-                weekPanel.setVisible(true);
-                listpanel.setVisible(false); 				
+				mMainPanel.comboBox.setSelectedItem("Week"); 				
 			}
 		});
         
@@ -140,10 +137,7 @@ public class MainWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				monthPanel.setVisible(false);
-                weekPanel.setVisible(false);
-                listpanel.setVisible(true);                 
+				mMainPanel.comboBox.setSelectedItem("List");                
 			}
 		});
         

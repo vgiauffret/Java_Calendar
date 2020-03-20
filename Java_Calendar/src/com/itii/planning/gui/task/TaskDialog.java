@@ -14,7 +14,6 @@ import javax.swing.JButton;
 public class TaskDialog extends JDialog {
 	
 	private JTextField txtNomTache;
-	private JTextField txtDate;
 	private JTextField txtDetails;
 	private JDatePicker calendar;
 
@@ -42,13 +41,8 @@ public class TaskDialog extends JDialog {
 		getContentPane().add(txtNomTache);
 		txtNomTache.setColumns(10);
 		
-		txtDate = new JTextField();
-		txtDate.setBounds(169, 67, 114, 19);
-		getContentPane().add(txtDate);
-		txtDate.setColumns(10);
-		
 		txtDetails = new JTextField();
-		txtDetails.setBounds(94, 109, 215, 149);
+		txtDetails.setBounds(94, 109, 318, 149);
 		getContentPane().add(txtDetails);
 		txtDetails.setColumns(10);
 		
@@ -75,7 +69,7 @@ public class TaskDialog extends JDialog {
 				cal.get(Calendar.DAY_OF_WEEK));
 				String datePattern = "dd-MM-yyyy";
 				calendar = new JDatePicker(model, datePattern);
-				calendar.setBounds(321, 69, 86, 41);
+				calendar.setBounds(169, 68, 177, 41);
 		}
 		return calendar;
 	}

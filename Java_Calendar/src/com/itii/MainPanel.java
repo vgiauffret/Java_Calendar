@@ -11,7 +11,7 @@ public class MainPanel extends JPanel {
 
     private String[] choiceList;
     JComboBox<String> mPanelList;
-    private JComboBox comboBox;
+    public JComboBox comboBox;
     private ListPanel listpanel;
     private MonthPanel monthPanel;
     private WeekPanel weekPanel;
@@ -75,8 +75,6 @@ public class MainPanel extends JPanel {
 
         };
     	comboBox.addActionListener(cbActionListener);
-
-
         
     }
 }
