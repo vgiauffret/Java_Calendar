@@ -4,15 +4,49 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import org.jdatepicker.JDatePanel;
+import org.jdatepicker.UtilCalendarModel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Locale;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 
 
-public class MonthPanel extends JPanel {
+public class MonthPanel extends JDatePanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Calendar cal;
+	Locale locale;
+	JDatePanel jdp;
+	
+	static UtilCalendarModel calendarModel = new UtilCalendarModel();
+
+	
+
 	public MonthPanel() 
 	{
+		super(calendarModel);
+		jdp = this;
+		
+		this.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(""+ jdp.getModel().getDay());
+			}
+		});
+		
+		
+		/*
 		this.setLayout(null);
     	this.setBounds(0, 50, 1190, 637);
     	this.setVisible(false);
@@ -145,7 +179,7 @@ public class MonthPanel extends JPanel {
     	JLabel lblMois = new JLabel("%Mois");
     	lblMois.setBounds(247, 12, 70, 15);
     	add(lblMois);
-    	
+    	*/
   
     	
 	}

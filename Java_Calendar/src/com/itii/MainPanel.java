@@ -15,15 +15,19 @@ public class MainPanel extends JPanel {
     private ListPanel listpanel;
     private MonthPanel monthPanel;
     private WeekPanel weekPanel;
+    public JPanel panel;
+    
+    MainPanel test;
     
     
     MainPanel(){
+    	test = this;
     	this.setSize(1190, 640);
     	
 
         choiceList = new String[] {"Month","Week","List"};
     	setLayout(null);
-    	JPanel panel = new JPanel();
+    	panel = new JPanel();
     	panel.setBounds(12, 0, 1166, 628);
     	add(panel);
     	panel.setLayout(null);
@@ -56,16 +60,25 @@ public class MainPanel extends JPanel {
                     	monthPanel.setVisible(true);
                         weekPanel.setVisible(false);
                         listpanel.setVisible(false); 
+                        test.panel.updateUI();
+                        test.panel.validate();
+                        test.panel.repaint();
                         break;
                     case "Week":
                         monthPanel.setVisible(false);
                         weekPanel.setVisible(true);
                         listpanel.setVisible(false); 
+                        test.panel.updateUI();
+                        test.panel.validate();
+                        test.panel.repaint();
                         break;
                     case "List":
                         monthPanel.setVisible(false);
                         weekPanel.setVisible(false);
-                        listpanel.setVisible(true);                      
+                        listpanel.setVisible(true);  
+                        test.panel.updateUI();
+                        test.panel.validate();
+                        test.panel.repaint();
                         break;
                     default:
                         System.out.println("No match selected");
