@@ -1,6 +1,12 @@
 package com.itii.planning.gui.task;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Calendar;
 
 import javax.swing.JDialog;
@@ -9,15 +15,22 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import org.jdatepicker.JDatePicker;
 import org.jdatepicker.UtilDateModel;
+
+import com.itii.db.Connexion;
+
 import javax.swing.JButton;
 
 public class TaskDialog extends JDialog {
 	
 	private JTextField txtNomTache;
+	private JTextField txtDate;
 	private JTextField txtDetails;
 	private JDatePicker calendar;
+	private Connexion databaseConn;
 
 	public TaskDialog() {
+		databaseConn = new Connexion();
+		databaseConn.connect();
     	this.setTitle("Nouvelle Tâche");
     	this.setBounds(600, 400, 450, 350);
         this.setVisible(true);
@@ -41,8 +54,13 @@ public class TaskDialog extends JDialog {
 		getContentPane().add(txtNomTache);
 		txtNomTache.setColumns(10);
 		
+		txtDate = new JTextField();
+		txtDate.setBounds(169, 67, 114, 19);
+		getContentPane().add(txtDate);
+		txtDate.setColumns(10);
+		
 		txtDetails = new JTextField();
-		txtDetails.setBounds(94, 109, 318, 149);
+		txtDetails.setBounds(94, 109, 215, 149);
 		getContentPane().add(txtDetails);
 		txtDetails.setColumns(10);
 		
@@ -51,10 +69,91 @@ public class TaskDialog extends JDialog {
 		JButton btnOk = new JButton("Ok");
 		btnOk.setBounds(321, 269, 117, 25);
 		getContentPane().add(btnOk);
+		btnOk.setEnabled(false);
 		
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(180, 269, 117, 25);
 		getContentPane().add(btnAnnuler);
+		
+		
+		txtDate.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				btnOk.setEnabled(true);
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
+		txtNomTache.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				btnOk.setEnabled(true);
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		txtDetails.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				btnOk.setEnabled(true);
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		btnOk.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					databaseConn.addTask(databaseConn.getnomTache(), databaseConn.getdateDue(), databaseConn.getdetails(), "false");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
 		
 	}
 	
@@ -69,7 +168,7 @@ public class TaskDialog extends JDialog {
 				cal.get(Calendar.DAY_OF_WEEK));
 				String datePattern = "dd-MM-yyyy";
 				calendar = new JDatePicker(model, datePattern);
-				calendar.setBounds(169, 68, 177, 41);
+				calendar.setBounds(321, 69, 86, 41);
 		}
 		return calendar;
 	}
