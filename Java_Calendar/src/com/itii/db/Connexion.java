@@ -21,6 +21,7 @@ public class Connexion {
 	Statement statement = null;
 	private String nomTache;
 	private String details;
+	private String dateDue;
 	
 	
 	public Connexion() {
@@ -29,6 +30,15 @@ public class Connexion {
 	
 	public String getnomTache() {
 		return this.nomTache;
+	}
+	
+	public String getdetails() {
+		return this.details;
+	}
+	
+	public String getdate() {
+		return this.dateDue;
+		
 	}
 	
 	public void createDatabase() {
@@ -67,6 +77,7 @@ public class Connexion {
 }
 	
 	public void addTask(String taskName, String date, String description,String state ) throws SQLException {
+	     
 		 connection = this.connect();
 		PreparedStatement stmt = connection.prepareStatement(
 				"INSERT INTO " + TABLE_NAME + " ( " + FIELD_NAME + ","
@@ -79,6 +90,7 @@ public class Connexion {
 		stmt.setString(4, state);
 		stmt.executeUpdate();
 		System.out.println("insertion d'une nouvelle entrée dans la table");
+		selectAll();
 		
 		
 	}

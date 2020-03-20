@@ -145,7 +145,7 @@ public class TaskDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					databaseConn.addTask(databaseConn.getnomTache(), databaseConn.getdateDue(), databaseConn.getdetails(), "false");
+					databaseConn.addTask(databaseConn.getnomTache(), databaseConn.getdate(), databaseConn.getdetails(), "false");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
