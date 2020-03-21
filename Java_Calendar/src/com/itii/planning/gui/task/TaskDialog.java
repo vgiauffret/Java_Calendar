@@ -82,6 +82,7 @@ public class TaskDialog extends JDialog {
 		});
 		
 		
+		
 		txtNomTache.addKeyListener(new KeyListener() {
 			
 			@Override
@@ -153,9 +154,8 @@ public class TaskDialog extends JDialog {
 		{
 				UtilDateModel model = new UtilDateModel();
 				Calendar cal = Calendar.getInstance();
-				model.setDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
-				cal.get(Calendar.DAY_OF_WEEK));
-				String datePattern = "dd-MM-yyyy";
+				model.setDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_WEEK));
+				String datePattern = "dd-MM-yyyy : hh:mm";
 				calendar = new JDatePicker(model, datePattern);
 				calendar.setBounds(169, 69, 191, 41);
 		}
