@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import com.itii.db.Connexion;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -11,9 +14,11 @@ import javax.swing.JScrollPane;
 public class ListPanel extends JPanel {
 	private JTable table;
 	private DefaultTableModel tableModel; 
-	
+	private Connexion connexion;
 	public ListPanel()
 	{
+		connexion = new Connexion();
+		connexion.connect();
 		this.setLayout(null);
     	this.setBounds(0, 50, 1190, 637);
     	this.setVisible(false);

@@ -44,9 +44,12 @@ public class MonthPanel extends JDatePanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				popUpTask  = new PopUpTask();
-				popUpTask.setFormatedRetrievedDate(jdp.getModel().getDay(),jdp.getModel().getMonth(), jdp.getModel().getYear());
-				System.out.println(popUpTask.getRetrievedDate());
+				popUpTask.setFormatedRetrievedDate(jdp.getModel().getDay(),jdp.getModel().getMonth()+1, jdp.getModel().getYear());
+				//System.out.println(popUpTask.getRetrievedDate());
 				popUpTask.getConnexion().selectDate(popUpTask.getRetrievedDate());
+				//update les labels correspondant
+				
+				
 			}
 		});
 		

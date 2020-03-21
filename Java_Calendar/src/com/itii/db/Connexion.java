@@ -7,7 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 
+ * @author malik
+ *
+ */
 public class Connexion {
 	private static final String TABLE_NAME = "Tasks";
 	private static final String FIELD_ID = "id";
@@ -16,43 +20,66 @@ public class Connexion {
 	private static final String FIELD_DETAILS = "details";
 	private static final String FIELD_STATE = "state";
 	private static final String FILE_NAME = "planning.db";
-	private static final String URL = "jdbc:sqlite:database/planning.db";
+	private static final int FIELD_NUMBER = 5;
+	private static final String URL = "jdbc:sqlite:database/"+FILE_NAME;
 	private Connection connection = null;
 	Statement statement = null;
 	private String nomTache;
 	private String details;
 	private String dateDue;
 
-
+	/**
+	 * 
+	 */
 	public Connexion() {
-		//this.createTable();
-	}
 
+	}
+	/**
+	 * 
+	 * @return
+	 */
 	public String getnomTache() {
 		return this.nomTache;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getdetails() {
 		return this.details;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getdate() {
 		return this.dateDue;
 
 	}
-
+	/**
+	 * 
+	 * @param nomtache
+	 */
 	public void setnomTache(String nomtache) {
 		this.nomTache = nomtache;
 	}
-
+	/**
+	 * 
+	 * @param detail
+	 */
 	public void setdetails(String detail) {
 		this.details = detail;
 	}
-
+	/**
+	 * 
+	 * @param date
+	 */
 	public void setDate(String date) {
 		this.dateDue = date;
 	}
-
+	/**
+	 * 
+	 */
 	public void createDatabase() {
 
 		String url = URL;
@@ -71,7 +98,10 @@ public class Connexion {
 	}  
 
 
-
+	/**
+	 * 
+	 * @return
+	 */
 
 	public Connection connect() {
 		// SQLite connection string
@@ -89,7 +119,14 @@ public class Connexion {
 	}
 
 
-
+	/**
+	 * 
+	 * @param taskName
+	 * @param date
+	 * @param description
+	 * @param state
+	 * @throws SQLException
+	 */
 	public void addTask(String taskName, String date, String description,String state ) throws SQLException {
 
 		connection = this.connect();
@@ -103,13 +140,14 @@ public class Connexion {
 
 		stmt.setString(4, state);
 		stmt.executeUpdate();
-		System.out.println("insertion d'une nouvelle entrée dans la table");
-		selectAll();
 
 
 	}
 
-
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	private void createTable() throws SQLException {
 
 		String sql =
@@ -130,7 +168,9 @@ public class Connexion {
 		}
 	}
 
-
+	/**
+	 * 
+	 */
 	public void readDatabase() {
 
 		try{
@@ -162,6 +202,9 @@ public class Connexion {
 		}	
 	}
 
+	/**
+	 * 
+	 */
 	public void selectAll(){
 		String sql = "SELECT id, name, date, details, state FROM Tasks";
 
@@ -189,7 +232,10 @@ public class Connexion {
 		}
 	}
 
-
+	/**
+	 * 
+	 * @param date
+	 */
 	public void selectDate(String date) {
 		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
 
@@ -216,14 +262,44 @@ public class Connexion {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-
-
-
-
-
 	}
 
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public String[] selectTask(String date) {
+		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
+		String[] tasks = new  String[FIELD_NUMBER]; 
 
+		try {
+			Connection conn = this.connect();
+			PreparedStatement prdstmt = conn.prepareStatement(sql);
+			prdstmt.setString(1,date);	
+			ResultSet rs = prdstmt.executeQuery();
+
+			while (rs.next() ) {
+				tasks[0] = String.valueOf(rs.getInt(FIELD_ID)); 
+				tasks[1] = String.valueOf(rs.getString(FIELD_NAME));
+				tasks[2] =String.valueOf(rs.getString(FIELD_DATE));
+				tasks[3] =String.valueOf(rs.getString(FIELD_DETAILS));
+				tasks[4] =String.valueOf(rs.getString(FIELD_STATE)); 
+			}
+
+		}catch(SQLException e) {
+
+
+		}
+
+
+		return tasks;
+	}
+
+	/**
+	 * 
+	 * @param id
+	 */
 	public void delete(int id) {
 
 		String sql = "DELETE FROM Tasks WHERE id = ?";
@@ -244,7 +320,9 @@ public class Connexion {
 	}
 
 
-
+	/**
+	 * 
+	 */
 	public void deleteAll() {
 
 		String sql = "DELETE FROM Tasks";

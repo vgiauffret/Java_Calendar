@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -20,14 +22,20 @@ import org.jdatepicker.UtilDateModel;
 import com.itii.db.Connexion;
 
 import javax.swing.JButton;
-
+/**
+ * 
+ * @author malik
+ *
+ */
 public class TaskDialog extends JDialog {
 	
 	private JTextField txtNomTache;
 	private JTextField txtDetails;
 	private JDatePicker calendar;
 	private Connexion databaseConn;
-
+/**
+ * 
+ */
 	public TaskDialog() {
 		databaseConn = new Connexion();
 		databaseConn.connect();
@@ -69,8 +77,7 @@ public class TaskDialog extends JDialog {
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(180, 269, 117, 25);
 		getContentPane().add(btnAnnuler);
-	
-		
+
 		
 		btnAnnuler.addActionListener(new ActionListener() {
 			
@@ -146,7 +153,11 @@ public class TaskDialog extends JDialog {
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}
 	
-	// Accesseur mettant à jour la date affichée
+
+	/**
+	 * 
+	 * @return
+	 */
 	public  JDatePicker getCalendar()
 	{
 		if (calendar == null)
@@ -161,12 +172,19 @@ public class TaskDialog extends JDialog {
 		}
 		return calendar;
 	}
+	/**
+	 * 
+	 * @param date
+	 */
 	
 	public void setDate(String date)
 	{
 		getCalendar().getFormattedTextField().setText(date);
 	}
-	// Accesseur récupérant la date actuellement affichée
+	/**
+	 * 
+	 * @return
+	 */
 	public String getDate()
 	{
 		return getCalendar().getFormattedTextField().getText();
