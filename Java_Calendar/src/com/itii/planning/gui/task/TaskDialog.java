@@ -23,8 +23,8 @@ import com.itii.db.Connexion;
 
 import javax.swing.JButton;
 /**
- * 
- * @author malik
+ * Correspond a la fenetre d'une creation d'une nouvelle tâche
+ * @author Malik && Vincent
  *
  */
 public class TaskDialog extends JDialog {
@@ -173,7 +173,7 @@ public class TaskDialog extends JDialog {
 		return calendar;
 	}
 	/**
-	 * 
+	 * Regle la date
 	 * @param date
 	 */
 	
@@ -182,7 +182,7 @@ public class TaskDialog extends JDialog {
 		getCalendar().getFormattedTextField().setText(date);
 	}
 	/**
-	 * 
+	 * Recuperer la date
 	 * @return
 	 */
 	public String getDate()

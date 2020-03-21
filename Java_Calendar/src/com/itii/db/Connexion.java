@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 /**
- * 
- * @author malik
+ * Correspond a la connexion a la base de donnés
+ * @author Malik && Vincent
  *
  */
 public class Connexion {

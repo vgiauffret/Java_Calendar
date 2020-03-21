@@ -10,11 +10,19 @@ import com.itii.db.Connexion;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-
+/**
+ * Correspond a la vue sous forme de liste des taches
+ * @author Malik && Vincent
+ *
+ */
 public class ListPanel extends JPanel {
 	private JTable table;
 	private DefaultTableModel tableModel; 
 	private Connexion connexion;
+	
+	/**
+	 * Constructeur de l'affichage liste
+	 */
 	public ListPanel()
 	{
 		connexion = new Connexion();
@@ -33,10 +41,16 @@ public class ListPanel extends JPanel {
     	scrollBar.setBounds(51, 49, 1107, 529);
     	add(scrollBar);
     	
+    	/**
+		 * Ajout des colonnes
+		 */
     	model.addColumn("Tâche"); 
     	model.addColumn("Date dûe"); 
     	model.addColumn("Détails"); 
     	
+    	/**
+		 * Ajout des lignes pour remplir le tableau avec les taches de la base de données
+		 */
     	model.addRow(new Object[]{"", "",""});
     	model.addRow(new Object[]{"", "",""});
     	model.addRow(new Object[]{"", "",""});

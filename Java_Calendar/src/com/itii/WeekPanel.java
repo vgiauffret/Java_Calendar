@@ -8,11 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+/**
+ * Correspond a la vue du calendrier par semaine
+ * @author Malik && Vincent
+ *
+ */
 public class WeekPanel extends JPanel{
 	private JTable table;
 	private PopUpTask dialogTask;
 	
-	
+	/**
+	 * Constructeur du WeekPanl qui permet d'avoir une vue du calendrier par semaine
+	 */
 	public WeekPanel()
 	{
 		this.setLayout(null);

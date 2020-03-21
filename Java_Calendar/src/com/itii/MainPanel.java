@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 /**
- * 
- * @author malik
+ * Correspond a la fenetre qui se trouve au centre de la fenetre Mainwindow et qui prend la vue list, month ou week
+ * @author Malik && Vincent
  *
  */
 public class MainPanel extends JPanel {                  
@@ -21,7 +21,7 @@ public class MainPanel extends JPanel {
 	private WeekPanel weekPanel;
 	public JPanel panel;
 	/**
-	 * 
+	 * Constructeur de Mainpanel qui se trouve au centre de la fenetre MainWindow
 	 */
 	MainPanel(){
 
@@ -51,7 +51,9 @@ public class MainPanel extends JPanel {
 
 
 
-
+		/**
+		 * Action lier au comboBox le choix du menu déroulant rendra visible notre sélection à l'écran
+		 */
 		ActionListener cbActionListener = new ActionListener() {//add actionlistner to listen for change
 			@Override
 			public void actionPerformed(ActionEvent e) {

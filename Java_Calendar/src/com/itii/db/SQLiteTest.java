@@ -8,6 +8,9 @@ import java.sql.Statement;
 
 public class SQLiteTest
 {	
+	/**
+	 * 
+	 */
 	public static void main(String[] args) {
 		String[] a =  new String[5];
 		

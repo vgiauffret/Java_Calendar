@@ -8,7 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-
+/**
+ * Correspond a la fenetre principale de l'application calendrier
+ * @author Malik && Vincent
+ *
+ */
 public class MainWindow extends JFrame {
 	/**
 	 */
@@ -33,7 +37,7 @@ public class MainWindow extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Initialise la page principale
 	 */
 	private void initialize() {
 
@@ -76,7 +80,9 @@ public class MainWindow extends JFrame {
 		monthPanel.setBounds(0, 30, 1190, 637);
 		this.add(monthPanel);
 
-
+		/**
+		 * Action lier a l'appuie sur le bouton créer
+		 */
 		creer.addActionListener(new ActionListener() {
 
 			@Override
@@ -86,6 +92,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton editer
+		 */
 		editer.addActionListener(new ActionListener() {
 
 			@Override
@@ -95,6 +104,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton marquer
+		 */
 		marquer.addActionListener(new ActionListener() {
 
 			@Override
@@ -104,6 +116,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton dupliquer
+		 */
 		dupliquer.addActionListener(new ActionListener() {
 
 			@Override
@@ -113,6 +128,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton supprimer
+		 */
 		supprimer.addActionListener(new ActionListener() {
 
 			@Override
@@ -122,6 +140,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton month dans la MainBar
+		 */
 		Month.addActionListener(new ActionListener() {
 
 			@Override
@@ -131,6 +152,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton week dans la MainBar
+		 */
 		Week.addActionListener(new ActionListener() {
 
 			@Override
@@ -139,6 +163,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton list dans la MainBar
+		 */
 		List.addActionListener(new ActionListener() {
 
 			@Override

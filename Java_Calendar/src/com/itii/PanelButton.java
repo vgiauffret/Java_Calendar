@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 /**
- * 
- * @author malik
+ * Correspond au panel des boutons Creer, Editer, Dupliquer, Marquer, et Supprimer 
+ * @author Malik && Vincent
  *
  */
 public class PanelButton extends JPanel {
@@ -40,7 +40,7 @@ public class PanelButton extends JPanel {
 	}
 
 	/**
-	 * 
+	 * Constructeur du PanelButton qui se situe a droite de notre fenetre principale, il contient les bouttons Creer, Editer, Marquer, Dupliquer, et Supprimer
 	 */
 	PanelButton(){
 		setLayout(null);
@@ -77,48 +77,68 @@ public class PanelButton extends JPanel {
 		lblDateDuJour.setBounds(20, 562, 176, 35);
 		panel_button.add(lblDateDuJour);
 
-
+		/**
+		 * Action lier a l'appuie sur le bouton creer qui lance une fenetre nouvelle tache
+		 */
 		this.getCreerBtn().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				new TaskDialog();
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton editer qui ouvre la tache sélectionnée et nous permet de la modifier
+		 */
 		this.getEditerBtn().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-
+				new TaskDialog();
+				//Identifier la tache selectionner
+				//Recuperer les données pour préremplir le TaskDialog
+				//Utilisateur modife le task
+				//Remplacer l'ancienne tache par la nouvelle dans la BD
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton dupliquer qui nous permet d'ajouter la date sélectionner à une date ultérieur
+		 */
 		this.getDupliquerBtn().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-
+				//Identifier la tache selectionner
+				//Recuperer les données pour préremplir le TaskDialog
+				//Posibilité de modifier la date seulement
+				//Renvoi a la BD apres boutton OK
 			}
 		});
-
+		
+		/**
+		 * Action lier a l'appuie sur le bouton marquer qui nous permet de déterminer qu'une tache est fini
+		 */
 		this.getMarquerBtn().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-
+				//Identifier la tache selectionner
+				//Passer state a true (Tache effectué)
+				//Changer couleur cette tache
 			}
 		});
 
+		/**
+		 * Action lier a l'appuie sur le bouton supprimer qui permet de supprimer une tache
+		 */
 		this.getSupprimerBtn().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+				//Identifier la tache selectionner
+				//Supprimer de la BD
 
 			}
 		});
