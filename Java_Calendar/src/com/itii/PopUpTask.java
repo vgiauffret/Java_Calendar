@@ -20,6 +20,10 @@ public class PopUpTask extends JDialog {
 	private String retrievedDate;
 
 
+	
+	public Connexion getConnexion() {
+		return connexion;
+	}
 
 
 	public void setRetrievedDate(String date) {
@@ -31,21 +35,37 @@ public class PopUpTask extends JDialog {
 	}
 
 	
+	public String twoDigits(String chaine) {
+		
+		String parsedString = chaine;
+		if(chaine.length() == 1) {
+			parsedString = "0"+ chaine;
+				}
+	return parsedString ;	
+	}
+	
 	public void setFormatedRetrievedDate(int day,int month,int year) {
 		String jour = String.valueOf(day);
+		jour = twoDigits(jour);
+		
 		String mois = String.valueOf(month);
+		mois = twoDigits(mois);
+		
 		String annee = String.valueOf(year);
-		this.retrievedDate =jour +"-" +"0"+ mois +"-" + annee ;
+		annee = twoDigits(annee);
+		
+		this.retrievedDate =jour +"-" + mois +"-" + annee ;
+	}
+	
+	
+	public void updateLabels() {
+		
 	}
 	
 
 	public PopUpTask() {
 		connexion = new Connexion();
 		connexion.connect();
-		System.out.println(this.getRetrievedDate());
-		connexion.selectDate(this.getRetrievedDate());
-
-		//connexion.selectAll();
 		this.setTitle("Tâche");
 		this.setBounds(500, 300, 350, 250);
 
