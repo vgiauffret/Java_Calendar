@@ -17,82 +17,82 @@ public class Connexion {
 	private static final String FIELD_STATE = "state";
 	private static final String FILE_NAME = "planning.db";
 	private static final String URL = "jdbc:sqlite:database/planning.db";
-    private Connection connection = null;
+	private Connection connection = null;
 	Statement statement = null;
 	private String nomTache;
 	private String details;
 	private String dateDue;
-	
-	
+
+
 	public Connexion() {
 		//this.createTable();
 	}
-	
+
 	public String getnomTache() {
 		return this.nomTache;
 	}
-	
+
 	public String getdetails() {
 		return this.details;
 	}
-	
+
 	public String getdate() {
 		return this.dateDue;
-		
+
 	}
-	
+
 	public void setnomTache(String nomtache) {
 		this.nomTache = nomtache;
 	}
-	
+
 	public void setdetails(String detail) {
 		this.details = detail;
 	}
-	
+
 	public void setDate(String date) {
 		this.dateDue = date;
 	}
-	
+
 	public void createDatabase() {
-		
-		  String url = URL;
-		   
-	        try {  
-	            Connection conn = DriverManager.getConnection(url);  
-	            if (conn != null) {  
-	                DatabaseMetaData meta = conn.getMetaData();  
-	                System.out.println("The driver name is " + meta.getDriverName());  
-	                System.out.println("A new database has been created.");  
-	            }  
-	   
-	        } catch (SQLException e) {  
-	            System.out.println(e.getMessage());  
-	        }  
-	    }  
-	  
-	
-	
+
+		String url = URL;
+
+		try {  
+			Connection conn = DriverManager.getConnection(url);  
+			if (conn != null) {  
+				DatabaseMetaData meta = conn.getMetaData();  
+				System.out.println("The driver name is " + meta.getDriverName());  
+				System.out.println("A new database has been created.");  
+			}  
+
+		} catch (SQLException e) {  
+			System.out.println(e.getMessage());  
+		}  
+	}  
+
+
+
 
 	public Connection connect() {
 		// SQLite connection string
-        
-        //Connection conn = null;
-        try {
-            connection = DriverManager.getConnection(URL);
-            //System.out.println("Connected to database");     
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return connection;
-		
-		
-}
-	
-	
-	
+
+		//Connection conn = null;
+		try {
+			connection = DriverManager.getConnection(URL);
+			//System.out.println("Connected to database");     
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return connection;
+
+
+	}
+
+
+
 	public void addTask(String taskName, String date, String description,String state ) throws SQLException {
-	     
-		 connection = this.connect();
+
+		connection = this.connect();
 		PreparedStatement stmt = connection.prepareStatement(
 				"INSERT INTO " + TABLE_NAME + " ( " + FIELD_NAME + ","
 						+ FIELD_DATE + "," + FIELD_DETAILS + ","
@@ -105,36 +105,36 @@ public class Connexion {
 		stmt.executeUpdate();
 		System.out.println("insertion d'une nouvelle entrée dans la table");
 		selectAll();
-		
-		
-	}
-		
-		
-	private void createTable() throws SQLException {
-		
-		String sql =
-		"CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " "+
-		"(" + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , "
-		+ FIELD_NAME + " STRING, "
-		+ FIELD_DATE + " TEXT, "
-		+ FIELD_DETAILS + " TEXT, "
-		+ FIELD_STATE + " STRING " +")";
 
-			if(statement != null)
-				{
-				statement.executeUpdate(sql);
-				}
-			else
-				{
-				throw new SQLException();
-				}
+
+	}
+
+
+	private void createTable() throws SQLException {
+
+		String sql =
+				"CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " "+
+						"(" + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , "
+						+ FIELD_NAME + " STRING, "
+						+ FIELD_DATE + " TEXT, "
+						+ FIELD_DETAILS + " TEXT, "
+						+ FIELD_STATE + " STRING " +")";
+
+		if(statement != null)
+		{
+			statement.executeUpdate(sql);
 		}
-		
-	
+		else
+		{
+			throw new SQLException();
+		}
+	}
+
+
 	public void readDatabase() {
-		
+
 		try{
-		
+
 			ResultSet rs = statement.executeQuery("select * from " + TABLE_NAME);
 			while (rs.next()){
 				System.out.print("lecture d'une donnée [");
@@ -154,75 +154,113 @@ public class Connexion {
 					connection.close();
 					System.out.println("fermeture de la connection à la base de données");
 				}
-				
+
 			} 
 			catch (SQLException e){
 				System.out.println("erreur lors de la fermeture de la connection");
 			}
 		}	
 	}
-	
+
 	public void selectAll(){
-        String sql = "SELECT id, name, date, details, state FROM Tasks";
-        
-        try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
-            
-            // loop through the result set
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") +  "\t" + 
-                                   rs.getString("name") + "\t" +
-                                   rs.getString("date") + "\t" +
-                                   rs.getString("details") + "\t" +
-                                   rs.getString("state") 
-                                   
-                		
-                		);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-	
-	
+		String sql = "SELECT id, name, date, details, state FROM Tasks";
+
+		try (Connection conn = this.connect();
+				Statement stmt  = conn.createStatement();
+				ResultSet rs    = stmt.executeQuery(sql)){
+
+
+
+			// loop through the result set
+			while (rs.next()) {
+				System.out.println(rs.getInt("id") +  "\t" + 
+						rs.getString("name") + "\t" +
+						rs.getString("date") + "\t" +
+						rs.getString("details") + "\t" +
+						rs.getString("state") 
+
+
+						);
+			}
+
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+
+	public void selectDate(String date) {
+		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
+
+		try {
+			Connection conn = this.connect();
+			PreparedStatement prdstmt = conn.prepareStatement(sql);
+			prdstmt.setString(1,date);	
+
+			ResultSet rs = prdstmt.executeQuery();
+
+
+			while (rs.next() ) {
+
+				System.out.println(rs.getInt(FIELD_ID) +  "\t" + 
+						rs.getString(FIELD_NAME) + "\t" +
+						rs.getString(FIELD_DATE) + "\t" +
+						rs.getString(FIELD_DETAILS) + "\t" +
+						rs.getString(FIELD_STATE) 
+						);
+			}
+
+
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+
+
+
+
+	}
+
+
 	public void delete(int id) {
-		
-		 String sql = "DELETE FROM Tasks WHERE id = ?";
-		 
-	        try (Connection conn = this.connect();
-	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-	 
-	            // set the corresponding param
-	            pstmt.setInt(1, id);
-	            // execute the delete statement
-	            pstmt.executeUpdate();
-	 
-	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
-	        }
-		
-		
+
+		String sql = "DELETE FROM Tasks WHERE id = ?";
+
+		try (Connection conn = this.connect();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			// set the corresponding param
+			pstmt.setInt(1, id);
+			// execute the delete statement
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+
 	}
-	
-	
-	
+
+
+
 	public void deleteAll() {
-		
+
 		String sql = "DELETE FROM Tasks";
-		 
-        try (Connection conn = this.connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {  
-            // execute the delete statement
-            pstmt.executeUpdate();
-            
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-		
-		
+
+		try (Connection conn = this.connect();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {  
+			// execute the delete statement
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+
 	}
-	
-	
+
+
 
 }

@@ -22,15 +22,13 @@ import javax.swing.JScrollBar;
 
 public class MonthPanel extends JDatePanel {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	Calendar cal;
 	Locale locale;
 	JDatePanel jdp;
-	DialogTask dialogTask;
+	PopUpTask popUpTask;
 	
 	static UtilCalendarModel calendarModel = new UtilCalendarModel();
 
@@ -44,8 +42,10 @@ public class MonthPanel extends JDatePanel {
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(""+ jdp.getModel().getDay());
-				dialogTask  = new DialogTask();
+				popUpTask  = new PopUpTask();
+				popUpTask.setFormatedRetrievedDate(jdp.getModel().getDay(),jdp.getModel().getMonth(), jdp.getModel().getYear());
+				//popUpTask.setRetrievedDate(String.valueOf(jdp.getModel().getDay())+String.valueOf(jdp.getModel().getMonth())+String.valueOf(jdp.getModel().getYear()));
+				System.out.println(popUpTask.getRetrievedDate());
 			}
 		});
 		
