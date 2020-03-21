@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.itii.db.*;
-import com.sun.org.apache.xerces.internal.impl.dv.xs.DateDV;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,22 +27,35 @@ public class PopUpTask extends JDialog {
 	private JButton button_0,button_1,button_2,button_3,button_4,button_5,button_6,button_7; 
 
 
-
+	/**
+	 * 
+	 * @return
+	 */
 	public Connexion getConnexion() {
 		return connexion;
 	}
 
-
+	/**
+	 * 
+	 * @param date
+	 */
 	public void setRetrievedDate(String date) {
 		this.retrievedDate = date;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getRetrievedDate() {
 		return this.retrievedDate;
 	}
+	/**
+	 * 
+	 * @param chaine
+	 * @return
+	 */
 
-
-	public String twoDigits(String chaine) {
+	private String twoDigits(String chaine) {
 
 		String parsedString = chaine;
 		if(chaine.length() == 1) {
@@ -112,23 +124,32 @@ public class PopUpTask extends JDialog {
 		nom.setBounds(23, 24, 44, 15);
 		panel.add(nom);
 
-		/*
-		int x=0,y=0;
-		for(int i=0;i<7;i++)
-		{
 
-			JButton 'button_' = new JButton("Tâche " + i);
-			button_.setBounds(x, y, 106, 25);
-			getContentPane().add(button_0);
-			if(i==3)
-			{
-				x=0;
-				y=y+33;
-			}
-			i=i+118;
-		}*/
+		JButton [] btnTasks = new JButton[9];
+		int x=0,y = 0;
+		for(int i = 1; i <= btnTasks.length; i++) { //TODO : remplacer btnTaks par getNBTache
+			btnTasks[i]= new JButton ("Tâche "+i);
+			btnTasks[i].setName("button_" + i);
+			btnTasks[i].setBounds(x, y, 106, 25);
+			this.add(btnTasks[i]);
+			x+=118;
+			if(i ==4) {
+				x= 0;
+				y +=33;
+			} 
 
-		button_0 = new JButton("Tâche 1");
+			btnTasks[i].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//	nomTache.setText();//Le getnomtache de la BD
+					//dateTache.setText("");//Le getdateDu de la BD
+					//details.setText("");//Le getdetails de la BD
+					JButton b = (JButton)e.getSource();
+					System.out.println("B entré "+b.getName());
+				}});
+		}
+
+
+		/*	button_0 = new JButton("Tâche 1");
 		button_0.setBounds(0, 0, 106, 25);
 		getContentPane().add(button_0);
 		button_0.setVisible(false);
@@ -175,7 +196,7 @@ public class PopUpTask extends JDialog {
 				nomTache.setText("");//Le getnomtache de la BD
 				dateTache.setText("");//Le getdateDu de la BD
 				details.setText("");//Le getdetails de la BD
-				
+
 			}
 		});
 
@@ -238,7 +259,7 @@ public class PopUpTask extends JDialog {
 				details.setText("");//Le getdetails de la BD
 			}
 		});
-		
+
 		button_7.addActionListener(new ActionListener() {
 
 			@Override
@@ -247,8 +268,7 @@ public class PopUpTask extends JDialog {
 				dateTache.setText("");//Le getdateDu de la BD
 				details.setText("");//Le getdetails de la BD
 			}
-		});
-
+		}); */
 
 
 		this.setVisible(true);

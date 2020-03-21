@@ -27,6 +27,7 @@ public class Connexion {
 	private String nomTache;
 	private String details;
 	private String dateDue;
+	private int nbTask;
 
 	/**
 	 * 
@@ -47,6 +48,12 @@ public class Connexion {
 	 */
 	public String getdetails() {
 		return this.details;
+	}
+
+
+	public int getNbTache() {
+		return this.nbTask;
+
 	}
 	/**
 	 * 
@@ -263,7 +270,13 @@ public class Connexion {
 			System.out.println(e.getMessage());
 		}
 	}
-
+    public String selectDistinctTask(String date) {
+    	String sql = "SELECT Distinct"+FIELD_ID+"FROM Tasks WHERE date = ?" ;
+    	String task="";
+    	
+    	
+    	return task;
+    }
 	/**
 	 * 
 	 * @param date
@@ -272,7 +285,7 @@ public class Connexion {
 	public String[] selectTask(String date) {
 		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
 		String[] tasks = new  String[FIELD_NUMBER]; 
-
+		nbTask =0;
 		try {
 			Connection conn = this.connect();
 			PreparedStatement prdstmt = conn.prepareStatement(sql);
@@ -285,6 +298,8 @@ public class Connexion {
 				tasks[2] =String.valueOf(rs.getString(FIELD_DATE));
 				tasks[3] =String.valueOf(rs.getString(FIELD_DETAILS));
 				tasks[4] =String.valueOf(rs.getString(FIELD_STATE)); 
+				nbTask++;
+
 			}
 
 		}catch(SQLException e) {
@@ -292,8 +307,8 @@ public class Connexion {
 
 		}
 
-
 		return tasks;
+
 	}
 
 	/**
