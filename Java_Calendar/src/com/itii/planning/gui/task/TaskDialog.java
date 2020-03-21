@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -68,6 +69,17 @@ public class TaskDialog extends JDialog {
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(180, 269, 117, 25);
 		getContentPane().add(btnAnnuler);
+	
+		
+		
+		btnAnnuler.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+			 dispose();
+			 
+			}
+		});
 		
 		
 		txtNomTache.addKeyListener(new KeyListener() {
@@ -121,6 +133,7 @@ public class TaskDialog extends JDialog {
 					databaseConn.setnomTache(txtNomTache.getText());
 					databaseConn.setdetails(txtDetails.getText());
 					databaseConn.setDate(getDate());
+					
 					databaseConn.addTask(databaseConn.getnomTache(), databaseConn.getdate(), databaseConn.getdetails(), "false");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -130,7 +143,7 @@ public class TaskDialog extends JDialog {
 		});
 		
 		
-		
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}
 	
 	// Accesseur mettant à jour la date affichée
