@@ -12,23 +12,33 @@ import java.awt.event.KeyEvent;
  *
  */
 public class MainPanel extends JPanel {                  
-
+	/**choix du menu déroulant permattant de sélectionner l'affichage*/
 	private String[] choiceList;
+	/**Objet contenant les choix de menu pour la vue */
 	JComboBox<String> mPanelList;
+	/**Objet de type ComboBox */
 	private JComboBox comboBox;
+	/**Panneau d'affichage sous forme de  liste */
 	private ListPanel listpanel;
+	/** Panneau d'affichage sous forme de  mois*/
 	private MonthPanel monthPanel;
+	/**Panneau d'affichage sous forme de  semaine  */
 	private WeekPanel weekPanel;
+	/**Objet de type JPanel */
 	public JPanel panel;
-	
+
+	/**
+	 * Récupère l'objet comboBox
+	 * @return Objet de type JComboBox
+	 */
 	public JComboBox getComboBox() {
-	
+
 		return comboBox;
 	}
 	/**
 	 * Constructeur de Mainpanel qui se trouve au centre de la fenetre MainWindow
 	 */
-	
+
 	MainPanel(){
 
 		this.setSize(1190, 640);
@@ -58,7 +68,7 @@ public class MainPanel extends JPanel {
 
 
 		/**
-		 * Action lier au comboBox le choix du menu déroulant rendra visible notre sélection à l'écran
+		 * Action liée au comboBox le choix du menu déroulant rendra visible notre sélection à l'écran
 		 */
 		ActionListener cbActionListener = new ActionListener() {//add actionlistner to listen for change
 			@Override

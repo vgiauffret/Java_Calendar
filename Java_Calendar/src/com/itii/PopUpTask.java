@@ -31,36 +31,24 @@ public class PopUpTask extends JDialog {
 	private JButton [] btnTasks = new JButton[8];
 
 
-
-/**
- * 
- * @return tableau de JButton correspondant chacun à une tâche différente
- */
 	public JButton[] getBtnTasks() {
-
-
 		return this.btnTasks;
-
 	}
 
-/**
- * 
- * @return
- */
+
 	public JLabel getNomTache() {
-
 		return this.nomTache;
-
 	}
+
+
+
 	public JLabel getDetailTache() {
-
 		return this.detailTache;
-
 	}
+
 	public JLabel getDateTache() {
 		return this.dateTache;
-		
-		
+
 	}
 
 
@@ -170,8 +158,8 @@ public class PopUpTask extends JDialog {
 		nom = new JLabel("Nom : ");
 		nom.setBounds(23, 24, 44, 15);
 		panel.add(nom);
-		
-		
+
+
 		int x=0,y = 0;
 		for(int i = 0; i < btnTasks.length; i++) { //TODO : remplacer btnTaks par getNBTache
 			btnTasks[i]= new JButton ("Tâche "+(i+1));
@@ -183,10 +171,10 @@ public class PopUpTask extends JDialog {
 				x= 0;
 				y +=33;
 			} 
-			
+
 			btnTasks[i].setVisible(false);
-			
-			
+
+
 		}
 
 		this.setVisible(true);

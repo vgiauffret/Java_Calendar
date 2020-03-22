@@ -13,7 +13,7 @@ public class SQLiteTest
 	 */
 	public static void main(String[] args) {
 		String[] a =  new String[5];
-		
+
 		Connexion connexion ;
 		connexion = new Connexion();
 		connexion.connect();
@@ -26,13 +26,8 @@ public class SQLiteTest
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
-		//System.out.println(connexion.selectTask("10-03-2020")[0]);
-		//connexion.selectAll();
-		//a = connexion.selectTask("10-03-2020");
-		//System.out.println(a[0] + "\t" +a[1] + "\t" + a[2] + "\t" + a[3] + "\t" + a[4] + "\t" );
-		
-		
-		
+
+
+
 	}
 }

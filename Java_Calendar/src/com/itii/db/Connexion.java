@@ -1,6 +1,7 @@
 package com.itii.db;
 
 import java.sql.Connection;
+
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,42 +27,53 @@ public class Connexion {
 	private static final String FILE_NAME = "planning.db";
 	private static final int FIELD_NUMBER = 5;
 	private static final String URL = "jdbc:sqlite:database/"+FILE_NAME;
+
+
+	/**Objet connection permettant de se connecter à la base */
 	private Connection connection = null;
+	/**Objet permettant d'effectuer les requete SQL {@link java.sql.Statement}  */
 	Statement statement = null;
+	/** Nom de la tâche à entrer/modifier/supprimer dans la base */
 	private String nomTache;
+	/** description détaillé de la  tâche à entrer/modifier/supprimer dans la base */
 	private String details;
+	/** Date dûe de la tâche à entrer/modifier/supprimer dans la base */
 	private String dateDue;
+	/** Nombre de tâche  : ce chanmp est mis à jour à chaque fois que l'on appelle une méthode de selection */
 	private int nbTask;
 
 	/**
-	 * 
+	 * Constructeur de la classe Connexion
 	 */
 	public Connexion() {
 
 	}
 	/**
-	 * 
-	 * @return
+	 *  Récupère l'objet nomTache
+	 * @return  Objet de type String
 	 */
 	public String getnomTache() {
 		return this.nomTache;
 	}
 	/**
-	 * 
-	 * @return
+	 * Récupère l'objet details
+	 * @return Objet de type String
 	 */
 	public String getdetails() {
 		return this.details;
 	}
 
-
+	/**
+	 * Récupère l'objet nbTask
+	 * @return Objet de type int
+	 */
 	public int getNbTache() {
 		return this.nbTask;
 
 	}
 	/**
-	 * 
-	 * @return
+	 * Récupère l'objet dateDue
+	 * @return Objet de type String
 	 */
 	public String getdate() {
 		return this.dateDue;
@@ -82,14 +94,14 @@ public class Connexion {
 		this.details = detail;
 	}
 	/**
-	 * 
-	 * @param date
+	 * Affecte la variable dateDue
+	 * @param date : Objet de type String
 	 */
 	public void setDate(String date) {
 		this.dateDue = date;
 	}
 	/**
-	 * 
+	 *  Méthode permettant de créer la base de donnée dans laquelle on va stocker les tâches 
 	 */
 	public void createDatabase() {
 
@@ -110,8 +122,8 @@ public class Connexion {
 
 
 	/**
-	 * 
-	 * @return objet connection permettant de se connecter à la base
+	 * méthode se connectant à la base de donnée
+	 * @return objet Connection permettant de se connecter à la base
 	 */
 
 	public Connection connect() {
@@ -125,8 +137,6 @@ public class Connexion {
 			System.out.println(e.getMessage());
 		}
 		return connection;
-
-
 	}
 
 
@@ -244,7 +254,7 @@ public class Connexion {
 
 	/**
 	 * 
-	 * @param date
+	 * @param date : Date de la tâche
 	 */
 	public void selectDate(String date) {
 		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
@@ -276,8 +286,8 @@ public class Connexion {
 
 	/**
 	 * 
-	 * @param date
-	 * @return
+	 * @param date : Date de la tâche à sélectionner
+	 * @return Tableau de tâches correspondant à la  date passé en paramètre
 	 */
 	public String[] selectTasks(String date) {
 		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
@@ -307,9 +317,14 @@ public class Connexion {
 		return tasks;
 
 	}
+	/**
+	 *  Méthode permettant de sélectionner une tâche dans la base
+	 * @param date  : date de la tâche à sélectionner
+	 * @return Tableau de String contenant les tâche correpondant à a date passée en  paramètre
+	 */
 	public String[] selectTask(String date) {
 		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
-		String[] tasks = new  String[10]; 
+		String[] tasks = new  String[30]; 
 		nbTask =0;
 		try {
 			Connection conn = this.connect();
@@ -339,10 +354,10 @@ public class Connexion {
 
 
 	/**
-	 * 
-	 * @param id
+	 * Méthode permettant de supprimer une tâche
+	 * @param id : identifiant de la tâche
 	 */
-	public void delete(int id) {
+	public void deleteTask(int id) {
 
 		String sql = "DELETE FROM Tasks WHERE id = ?";
 
@@ -359,12 +374,12 @@ public class Connexion {
 		}
 	}
 
-/**
- * 
- * @param nom
- * @param date
- * @param details
- */
+	/**
+	 * Méthode permettant de supprimer une tâche
+	 * @param nom Nom de la tâche
+	 * @param date Date de la tâche
+	 * @param details details realitf à la tâche
+	 */
 	public void deleteTask(String nom,String date, String details) {
 		String sql = "DELETE FROM Tasks WHERE id = ? , name = ? , date = ? , details = ?";
 		try (Connection conn = this.connect();
@@ -390,7 +405,7 @@ public class Connexion {
 	public void deleteAll() {
 
 		String sql = "DELETE FROM Tasks";
-
+		String[] tasks = new String[10];
 		try (Connection conn = this.connect();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {  
 			// execute the delete statement
@@ -403,8 +418,8 @@ public class Connexion {
 
 	}
 	/**
-	 * 
-	 * @return
+	 * Méthode permettant de récupèrer toutes les tâches de la base
+	 * @return Tableau contenant toutes les tâche contenus dans la table Tasks
 	 */
 	public String[] selectAllTasks() {
 		String sql = "SELECT id, name, date, details, state FROM Tasks";
@@ -418,6 +433,7 @@ public class Connexion {
 
 			// loop through the result set
 			while (rs.next()) {
+
 				tasks[nbTask] = String.valueOf(rs.getInt(FIELD_ID))+"\t"+
 						rs.getString(FIELD_NAME)+"\t"+
 						rs.getString(FIELD_DATE)+ "\t"+
@@ -434,12 +450,12 @@ public class Connexion {
 		return tasks;
 	}
 
-/**
- * 
- * @param nom
- * @param date
- * @param details
- */
+	/**
+	 * 
+	 * @param nom
+	 * @param date
+	 * @param details
+	 */
 	public void updateTask(String nom,String date, String details) {
 		String sql = "UPDATE Tasks SET state = 'true' WHERE name = ? , date = ? , details = ?";
 		try (Connection conn = this.connect();

@@ -20,25 +20,43 @@ public class PanelButton extends JPanel {
 	JLabel lblDateDuJour;
 	private JButton btnCreer,btnEditer,btnDupliquer,btnMarquer,btnSupprimer;
 	private ListPanel listPanel;
-	
+	/**
+	 * 
+	 * @param listpanel
+	 */
 	public void setListPanel(ListPanel listpanel) {
-			this.listPanel = listpanel;
-		
+		this.listPanel = listpanel;
+
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public ListPanel getListPanel() {
 		return listPanel;
-		
-		
+
+
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getCreerBtn()
 	{
 		return btnCreer;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getEditerBtn()
 	{
 		return btnEditer;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getDupliquerBtn()
 	{
 		return btnDupliquer;
@@ -129,7 +147,7 @@ public class PanelButton extends JPanel {
 				//Renvoi a la BD apres boutton OK
 			}
 		});
-		
+
 		/**
 		 * Action lier a l'appuie sur le bouton marquer qui nous permet de déterminer qu'une tache est fini
 		 */
@@ -152,7 +170,7 @@ public class PanelButton extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				//panelbutton.setListPanel(listpanel);
 				//getListPanel().checkComboBox();
-				
+
 
 			}
 		});

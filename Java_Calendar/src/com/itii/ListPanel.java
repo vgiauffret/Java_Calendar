@@ -25,22 +25,28 @@ public class ListPanel extends JPanel {
 	private Connexion connexion;
 	private String[] Tasks;
 	private PanelButton panelButton;
-	
-	
+	/**
+	 * Affecte l'objet panelButton
+	 * @param panelbutton
+	 */
+
 	public void setPanelButton(PanelButton panelbutton) {
 		this.panelButton = panelbutton;
-		
+
 	}
-	
-	
+
+	/**
+	 *  Récupère l'objet panelButton
+	 * @return  Objet de type PanelButton
+	 */
 	public PanelButton getPanelButton() {
 		return panelButton;
 
 	}
-	
+
 
 	/**
-	 * Constructeur de l'affichage liste
+	 * Constructeur de l'objet ListPanel
 	 */
 	public ListPanel()
 	{
@@ -93,8 +99,21 @@ public class ListPanel extends JPanel {
 				String[] splittedTasks = sb.toString().split("\t");
 				model.addRow(new Object[]{false,splittedTasks[1], splittedTasks[2],splittedTasks[3]});
 			}
-			
+			this.setPanelButton(panelButton = new PanelButton());
+			panelButton.getSupprimerBtn().addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					checkComboBox();
+
+				}
+			});
+
 	}
+	/**
+	 * Méthode vérifiant quelles tâche sont coché sur notre fenêtre
+	 */
 	public void checkComboBox() {
 
 		System.out.println("checkComboBox");

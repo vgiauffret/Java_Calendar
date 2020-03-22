@@ -28,19 +28,23 @@ import javax.swing.JScrollBar;
  *
  */
 public class MonthPanel extends JDatePanel {
-	
-	
+
+
 	private static final long serialVersionUID = 1L;
 
 	Calendar cal;
+
 	Locale locale;
+
 	JDatePanel jdp;
+
 	PopUpTask popUpTask;
+
 	String[] Tasks;
-	
+
 	static UtilCalendarModel calendarModel = new UtilCalendarModel();
 
-	
+
 	/**
 	 * Constructeur du MonthPanel qui est l'affichage par défaut de notre calendrier
 	 */
@@ -49,49 +53,45 @@ public class MonthPanel extends JDatePanel {
 		super(calendarModel);
 		jdp = this;
 		jdp.setVisible(false);
-		
+
 		/**
 		 * Action lier a l'appuie sur une date du calendrier
 		 */
 		this.addActionListener(new ActionListener() {
-			
-			
+
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		
+
 				popUpTask  = new PopUpTask();
 				popUpTask.setFormatedRetrievedDate(jdp.getModel().getDay(),jdp.getModel().getMonth()+1, jdp.getModel().getYear());
 				popUpTask.getConnexion().selectDate(popUpTask.getRetrievedDate());
 				Tasks = popUpTask.getConnexion().selectTask(popUpTask.getRetrievedDate());
-				
+
 				for( int i=0;i<popUpTask.getConnexion().getNbTache();i++) {
-					
+
 					StringBuilder sb = new StringBuilder(Tasks[i]);
 					String[] splittedTasks = sb.toString().split("\t");
 					popUpTask.getBtnTasks()[i].setVisible(true);
-					
-				popUpTask.getBtnTasks()[i].addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						popUpTask.getNomTache().setText(splittedTasks[1]);
-						popUpTask.getDateTache().setText(splittedTasks[2]);
-						popUpTask.getDetailTache().setText(splittedTasks[3]);
-						
-					}
-				});
-				
-			
+
+					popUpTask.getBtnTasks()[i].addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent arg0) {
+							popUpTask.getNomTache().setText(splittedTasks[1]);
+							popUpTask.getDateTache().setText(splittedTasks[2]);
+							popUpTask.getDetailTache().setText(splittedTasks[3]);
+
+						}
+					});
+
+
 				}
-				
-				
-			
-				
-				//update les labels correspondant
-				
-				
+
+
+
 			}
 		});
-    	
+
 	}
 }

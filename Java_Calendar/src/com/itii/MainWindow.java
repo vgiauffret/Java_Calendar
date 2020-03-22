@@ -9,27 +9,42 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 /**
- * Correspond a la fenetre principale de l'application calendrier
- * @author Malik && Vincent
+ * Fenêtre principal du calendrier implémentant la pattern Singleton : Un seul objet MainWindow instancié dans tout le programme
+ * @author Malik & Vincent
  *
  */
 public class MainWindow extends JFrame {
-	/**
-	 */
+	/**Objet static de type MainWindow */
 	private static MainWindow mWindow;
+	/**Panneau d'affichage principale */
 	private MainPanel mMainPanel;
+	/** Barre de menu*/
 	private JMenuBar mainMenuBar = new JMenuBar();
-	private JMenuItem creer, editer , marquer, dupliquer , supprimer;
+	/** Sous-menu créer */
+	private JMenuItem creer;
+	/** Sous-menu editer */
+	private JMenuItem  editer;
+	/** Sous-menu marquer*/
+	private JMenuItem marquer;
+	/**  Sous-menu Duppliquer*/
+	private JMenuItem dupliquer;
+	/** Sous-menu Supprimer*/
+	private JMenuItem supprimer;
+	/** Menu placé sur la barre de menu : Fichier ,Edition , Vue , Aide */
 	private JMenu fichier,edition,vue,aide ;
+	/** Panneau de bouton   latérale */
 	private PanelButton panelbutton;
+	/**Menu permettant de choisir l'affichage du calendrier   */
 	private JMenuItem Month,Week,List;
-	private ImageIcon logo;
+	/** Panneau affichant le calendrier sous forme de liste */
 	private ListPanel listpanel;
+	/** Panneau affichant le calendrier en mois*/
 	private MonthPanel monthPanel;
+	/**   Panneau affichant le calendrier en semaine*/
 	private WeekPanel weekPanel;
 
 	/**
-	 * 
+	 * Constructeur privé (Singleton)
 	 */
 	private MainWindow() {
 		initialize();
@@ -37,7 +52,8 @@ public class MainWindow extends JFrame {
 	}
 
 	/**
-	 * Initialise la page principale
+	 * 
+	 * Initialise l'objet MainWindow et positionne les panels, boutons et menus dans la fenêtre.
 	 */
 	private void initialize() {
 
@@ -50,7 +66,7 @@ public class MainWindow extends JFrame {
 		mMainPanel.setBounds(0, 0, 1190, 637);
 		panelbutton = new PanelButton();
 		panelbutton.setBounds(1188, 0, 200, 637);
-		 //new ListPanel();
+
 		fichier = new JMenu("Fichier");
 		edition = new JMenu("Edition");
 		creer = new JMenuItem("Créer");
@@ -71,8 +87,8 @@ public class MainWindow extends JFrame {
 		vue.add(Month);vue.add(Week);vue.add(List);
 
 		listpanel = new ListPanel();
-		
-		
+
+
 		listpanel.setBounds(0, 30, 1190, 637);
 		this.add(listpanel);
 		weekPanel = new WeekPanel();
@@ -81,11 +97,11 @@ public class MainWindow extends JFrame {
 		monthPanel = new MonthPanel();
 		monthPanel.setBounds(0, 30, 1190, 637);
 		this.add(monthPanel);
-		//panelbutton.setListPanel(listpanel);
-		
+		listpanel.setPanelButton(panelbutton);
+		panelbutton.setListPanel(listpanel);
 
 		/**
-		 * Action lier a l'appuie sur le bouton créer
+		 * Action liée a l'appuie sur le bouton créer
 		 */
 		creer.addActionListener(new ActionListener() {
 
@@ -97,7 +113,7 @@ public class MainWindow extends JFrame {
 		});
 
 		/**
-		 * Action lier a l'appuie sur le bouton editer
+		 * Action liée a l'appuie sur le bouton editer
 		 */
 		editer.addActionListener(new ActionListener() {
 
@@ -109,7 +125,7 @@ public class MainWindow extends JFrame {
 		});
 
 		/**
-		 * Action lier a l'appuie sur le bouton marquer
+		 * Action liée a l'appuie sur le bouton marquer
 		 */
 		marquer.addActionListener(new ActionListener() {
 
@@ -133,22 +149,22 @@ public class MainWindow extends JFrame {
 		});
 
 		/**
-		 * Action lier a l'appuie sur le bouton supprimer
+		 * Action liée a l'appuie sur le bouton supprimer
 		 */
 		supprimer.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				panelbutton.setListPanel(listpanel);
-				listpanel.checkComboBox();
-				
-		
+				//panelbutton.setListPanel(listpanel);
+				//listpanel.checkComboBox();
+
+
 			}
 		});
 
 		/**
-		 * Action lier a l'appuie sur le bouton month dans la MainBar
+		 * Action liée a l'appuie sur le bouton month dans la MainBar
 		 */
 		Month.addActionListener(new ActionListener() {
 
@@ -160,7 +176,7 @@ public class MainWindow extends JFrame {
 		});
 
 		/**
-		 * Action lier a l'appuie sur le bouton week dans la MainBar
+		 * Action liée a l'appuie sur le bouton week dans la MainBar
 		 */
 		Week.addActionListener(new ActionListener() {
 
@@ -171,7 +187,7 @@ public class MainWindow extends JFrame {
 		});
 
 		/**
-		 * Action lier a l'appuie sur le bouton list dans la MainBar
+		 * Action liée a l'appuie sur le bouton list dans la MainBar
 		 */
 		List.addActionListener(new ActionListener() {
 
@@ -198,8 +214,8 @@ public class MainWindow extends JFrame {
 
 
 	/**
-	 * 
-	 * @return
+	 * Méthode d'instanciation de la classe MainWindow: si  un objet MainWindow existe déjà, c'est ce même objet qui est retourné.
+	 * @return Objet MainWindow
 	 */
 	public static MainWindow getInstance() {
 		if (mWindow == null) {
