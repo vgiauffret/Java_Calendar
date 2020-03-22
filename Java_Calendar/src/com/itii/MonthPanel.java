@@ -55,21 +55,26 @@ public class MonthPanel extends JDatePanel {
 
 		this.addActionListener(new ActionListener() {
 
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				popUpTask  = new PopUpTask();
 				popUpTask.setFormatedRetrievedDate(jdp.getModel().getDay(),jdp.getModel().getMonth()+1, jdp.getModel().getYear());
-				popUpTask.getConnexion().selectDate(popUpTask.getRetrievedDate());
+				//popUpTask.getConnexion().selectDate(popUpTask.getRetrievedDate());
 				Tasks = popUpTask.getConnexion().selectTask(popUpTask.getRetrievedDate());
 
 				for( int i=0;i<popUpTask.getConnexion().getNbTache();i++) {
-
 					StringBuilder sb = new StringBuilder(Tasks[i]);
 					String[] splittedTasks = sb.toString().split("\t");
-					popUpTask.getBtnTasks()[i].setVisible(true);
+					
+					if(popUpTask.getConnexion().getNbTache()>=1 && i==1)
+					{
+						popUpTask.getNomTache().setText(splittedTasks[1]);
+						popUpTask.getDateTache().setText(splittedTasks[2]);
+						popUpTask.getDetailTache().setText(splittedTasks[3]);
+					}
 
+					popUpTask.getBtnTasks()[i].setVisible(true);
 					popUpTask.getBtnTasks()[i].addActionListener(new ActionListener() {
 
 						@Override
@@ -77,15 +82,10 @@ public class MonthPanel extends JDatePanel {
 							popUpTask.getNomTache().setText(splittedTasks[1]);
 							popUpTask.getDateTache().setText(splittedTasks[2]);
 							popUpTask.getDetailTache().setText(splittedTasks[3]);
-
 						}
 					});
-
-
 				}
-
 			}
 		});
-
 	}
 }

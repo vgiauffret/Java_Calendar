@@ -1,6 +1,5 @@
 package com.itii.planning.gui.task;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,6 +13,7 @@ import java.util.Calendar;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import org.jdatepicker.JDatePicker;
@@ -25,13 +25,12 @@ import javax.swing.JButton;
 /**
  * Correspond a la fenetre d'une creation d'une nouvelle tâche
  * @author Malik et Vincent
- *
  */
 public class TaskDialog extends JDialog {
-	/** objet contentant le nom de la tâche*/
+	/** objet de type JTextField contentant le nom de la tâche*/
 	private JTextField txtNomTache;
-	/** objet contentant les détails relatifs à la tâche*/
-	private JTextField txtDetails;
+	/** objet de type JTextArea contentant les détails relatifs à la tâche*/
+	private JTextArea txtDetails;
 	/** objet de type Calendar*/
 	private JDatePicker calendar;
 	/** objet permettant de se connecter à la base*/
@@ -65,7 +64,8 @@ public class TaskDialog extends JDialog {
 		getContentPane().add(txtNomTache);
 		txtNomTache.setColumns(10);
 
-		txtDetails = new JTextField();
+		txtDetails = new JTextArea();
+		txtDetails.setLineWrap(true);
 		txtDetails.setBounds(94, 109, 318, 149);
 		getContentPane().add(txtDetails);
 		txtDetails.setColumns(10);
@@ -144,17 +144,14 @@ public class TaskDialog extends JDialog {
 					databaseConn.setnomTache(txtNomTache.getText());
 					databaseConn.setdetails(txtDetails.getText());
 					databaseConn.setDate(getDate());
-
 					databaseConn.addTask(databaseConn.getnomTache(), databaseConn.getdate(), databaseConn.getdetails(), "false");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				dispose();
 			}
-		});
-
-
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		});		
 	}
 
 
@@ -169,7 +166,7 @@ public class TaskDialog extends JDialog {
 			UtilDateModel model = new UtilDateModel();
 			Calendar cal = Calendar.getInstance();
 			model.setDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_WEEK));
-			String datePattern = "dd-MM-yyyy : hh:mm";
+			String datePattern = "dd-MM-yyyy";
 			calendar = new JDatePicker(model, datePattern);
 			calendar.setBounds(169, 69, 191, 41);
 		}

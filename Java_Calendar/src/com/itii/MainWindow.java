@@ -87,8 +87,6 @@ public class MainWindow extends JFrame {
 		vue.add(Month);vue.add(Week);vue.add(List);
 
 		listpanel = new ListPanel();
-
-
 		listpanel.setBounds(0, 30, 1190, 637);
 		this.add(listpanel);
 		weekPanel = new WeekPanel();
@@ -207,7 +205,7 @@ public class MainWindow extends JFrame {
 		getContentPane().add(mMainPanel);
 		getContentPane().add(panelbutton);
 
-
+		
 		this.validate();
 		this.repaint();
 	}

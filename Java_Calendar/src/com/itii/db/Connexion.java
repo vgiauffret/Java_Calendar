@@ -262,23 +262,7 @@ public class Connexion {
 		try {
 			Connection conn = this.connect();
 			PreparedStatement prdstmt = conn.prepareStatement(sql);
-			prdstmt.setString(1,date);	
-
-			ResultSet rs = prdstmt.executeQuery();
-
-
-			while (rs.next() ) {
-
-				System.out.println(rs.getInt(FIELD_ID) +  "\t" + 
-						rs.getString(FIELD_NAME) + "\t" +
-						rs.getString(FIELD_DATE) + "\t" +
-						rs.getString(FIELD_DETAILS) + "\t" +
-						rs.getString(FIELD_STATE) 
-						);
-			}
-
-
-
+			prdstmt.setString(1,date);				
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -424,7 +408,7 @@ public class Connexion {
 	public String[] selectAllTasks() {
 		String sql = "SELECT id, name, date, details, state FROM Tasks";
 		nbTask = 0;
-		String[] tasks = new String[10];
+		String[] tasks = new String[100];
 		try (Connection conn = this.connect();
 				Statement stmt  = conn.createStatement();
 				ResultSet rs    = stmt.executeQuery(sql)){

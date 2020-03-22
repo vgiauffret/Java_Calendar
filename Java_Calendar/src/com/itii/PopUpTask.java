@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 /**
  * Correspond à la fenetre pour afficher les tâches du jour
  * @author Malik et Vincent
@@ -32,7 +34,7 @@ public class PopUpTask extends JDialog {
 	/** Objet de type JLabel qui contient le nom de la tâche			*/
 	private JLabel nomTache;
 	/** Objet de type JLabel qui contient les détails de la tâches		*/
-	private JLabel detailTache;
+	private JTextArea detailTache;
 	/** Objet de type JLabel qui contient la date dûe de la tâche		*/
 	private JLabel dateTache;
 	/** Objet de type String qui contient la date						*/
@@ -62,7 +64,7 @@ public class PopUpTask extends JDialog {
 	 * Récupère les détails de la tâche
 	 * @return Objet de type JLabel
 	 */
-	public JLabel getDetailTache() {
+	public JTextArea getDetailTache() {
 		return this.detailTache;
 	}
 		
@@ -151,15 +153,21 @@ public class PopUpTask extends JDialog {
 		panel.setLayout(null);
 
 		dateTache = new JLabel();
-		dateTache.setBounds(149, 70, 142, 17);
+		dateTache.setVerticalAlignment(SwingConstants.TOP);
+		dateTache.setHorizontalAlignment(SwingConstants.LEFT);
+		dateTache.setBounds(121, 68, 142, 17);
 		panel.add(dateTache);
 
-		detailTache = new JLabel();
-		detailTache.setBounds(149, 131, 315, 95);
+		detailTache = new JTextArea();
+		detailTache.setLineWrap(true);
+		detailTache.setEditable(false);
+		detailTache.setBounds(121, 131, 315, 86);
 		panel.add(detailTache);
 
 		nomTache = new JLabel();
-		nomTache.setBounds(149, 24, 98, 15);
+		nomTache.setHorizontalAlignment(SwingConstants.LEFT);
+		nomTache.setVerticalAlignment(SwingConstants.TOP);
+		nomTache.setBounds(121, 24, 315, 15);
 		panel.add(nomTache);
 		nomTache.setText("Aucune Tâche");
 
@@ -180,7 +188,7 @@ public class PopUpTask extends JDialog {
 			btnTasks[i]= new JButton ("Tâche "+(i+1));
 			btnTasks[i].setName("button_" + (i+1));
 			btnTasks[i].setBounds(x, y, 106, 25);
-			this.add(btnTasks[i]);
+			getContentPane().add(btnTasks[i]);
 			x+=118;
 			if(i ==3) {
 				x= 0;
@@ -188,6 +196,7 @@ public class PopUpTask extends JDialog {
 			} 
 			btnTasks[i].setVisible(false);
 		}
+		
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);

@@ -99,7 +99,7 @@ public class ListPanel extends JPanel {
 				String[] splittedTasks = sb.toString().split("\t");
 				model.addRow(new Object[]{false,splittedTasks[1], splittedTasks[2],splittedTasks[3]});
 			}
-			this.setPanelButton(panelButton = new PanelButton());
+			/*this.setPanelButton(panelButton = new PanelButton());
 			panelButton.getSupprimerBtn().addActionListener(new ActionListener() {
 
 				@Override
@@ -108,8 +108,7 @@ public class ListPanel extends JPanel {
 					checkComboBox();
 
 				}
-			});
-
+			});*/
 	}
 	/**
 	 * Méthode vérifiant quelles tâche sont coché sur notre fenêtre
