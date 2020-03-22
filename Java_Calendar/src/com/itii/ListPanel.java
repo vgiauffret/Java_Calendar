@@ -40,12 +40,22 @@ public class ListPanel extends JPanel {
 
 		private static final long serialVersionUID = 1L;
 
-		@Override
-		 public Class getColumnClass(int columnIndex) {
-		        	 return Boolean.class;
-		         }};
+		public Class getColumnClass(int column) {
+            switch (column) {
+                case 0:
+                    return Boolean.class;
+                case 1:
+                    return String.class;
+                case 2:
+                    return String.class;
+                case 3:
+                    return String.class;
+                default:
+                    return String.class;
+            }
+		}};
 		table = new JTable(model);
-		table.setEnabled(false);
+		table.setEnabled(true);
 		table.setBounds(88, 96, 953, 529);
 		add(table);
 
@@ -66,7 +76,7 @@ public class ListPanel extends JPanel {
 		 for( int i=0;i<connexion.getNbTache();i++) {
 			StringBuilder sb = new StringBuilder(Tasks[i]);
 			 String[] splittedTasks = sb.toString().split("\t");
-			 model.addRow(new Object[]{"",splittedTasks[1], splittedTasks[2],splittedTasks[3]});
+			 model.addRow(new Object[]{false,splittedTasks[1], splittedTasks[2],splittedTasks[3]});
 
 		 }
 
