@@ -177,7 +177,8 @@ public class PopUpTask extends JDialog {
 				x= 0;
 				y +=33;
 			} 
-
+			
+			btnTasks[i].setVisible(false);
 			
 			
 		}

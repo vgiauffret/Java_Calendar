@@ -68,6 +68,7 @@ public class MonthPanel extends JDatePanel {
 					int j = 0;
 					StringBuilder sb = new StringBuilder(Tasks[i]);
 					String[] splittedTasks = sb.toString().split("\t");
+					popUpTask.getBtnTasks()[i].setVisible(true);
 					
 				popUpTask.getBtnTasks()[i].addActionListener(new ActionListener() {
 					

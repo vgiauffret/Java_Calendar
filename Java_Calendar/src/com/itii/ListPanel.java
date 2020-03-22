@@ -44,6 +44,7 @@ public class ListPanel extends JPanel {
     	/**
 		 * Ajout des colonnes
 		 */
+    	model.addColumn("Sélectionner"); 
     	model.addColumn("Tâche"); 
     	model.addColumn("Date dûe"); 
     	model.addColumn("Détails"); 
@@ -60,10 +61,7 @@ public class ListPanel extends JPanel {
     	model.addRow(new Object[]{"", "",""});
     	model.addRow(new Object[]{"", "",""});
     	model.addRow(new Object[]{"", "",""});
-    	model.addRow(new Object[]{"", "",""});
-    	
-    	
-    	
+    	model.addRow(new Object[]{"", "",""});	
 
 
 	}
