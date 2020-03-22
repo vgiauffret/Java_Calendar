@@ -13,85 +13,97 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 /**
- * Correspond a la fenetre pour afficher les tâches du jour
+ * Correspond à la fenetre pour afficher les tâches du jour
  * @author Malik && Vincent
  *
  */
 public class PopUpTask extends JDialog {
 
+	/** ID unique*/
 	private static final long serialVersionUID = 1L;
+	/** Objet de type connexion pour la connexion à la base de donnée	*/
 	private Connexion connexion;
+	/** Objet de type JLabel											*/
 	private JLabel nom;
+	/** Objet de type JLabel											*/
 	private JLabel date;
+	/** Objet de type JLabel											*/
 	private JLabel details;
+	/** Objet de type JLabel qui contient le nom de la tâche			*/
 	private JLabel nomTache;
+	/** Objet de type JLabel qui contient les détails de la tâches		*/
 	private JLabel detailTache;
+	/** Objet de type JLabel qui contient la date dûe de la tâche		*/
 	private JLabel dateTache;
+	/** Objet de type String qui contient la date						*/
 	private String retrievedDate;
+	/** Objet de type tableau de Jbutton qui contient les butons pour les tâches */
 	private JButton [] btnTasks = new JButton[8];
 
 
 
-/**
- * 
- * @return tableau de JButton correspondant chacun à une tâche différente
- */
+	/**
+	 * Récupère tous les boutons pour les différentes tâches
+	 * @return Objet de type tableau de JButton
+	 */
 	public JButton[] getBtnTasks() {
-
-
 		return this.btnTasks;
-
 	}
 
-/**
- * 
- * @return
- */
+	/**
+	 * Récupère le nom de la tâche
+	 * @return Objet de type JLabel
+	 */
 	public JLabel getNomTache() {
-
 		return this.nomTache;
-
 	}
+	
+	/**
+	 * Récupère les détails de la tâche
+	 * @return Objet de type JLabel
+	 */
 	public JLabel getDetailTache() {
-
 		return this.detailTache;
 
 	}
+	
+	/**
+	 * Récupère la date de la tâche
+	 * @return Objet de type JLabel
+	 */
 	public JLabel getDateTache() {
 		return this.dateTache;
-		
-		
 	}
 
-
 	/**
-	 * 
-	 * @return
+	 * Récupère l'objet connexion
+	 * @return Un objet de type Connexion
 	 */
 	public Connexion getConnexion() {
 		return connexion;
 	}
 
 	/**
-	 * 
-	 * @param date
+	 * Affecte une date 
+	 * @param Un objet de type String
 	 */
 	public void setRetrievedDate(String date) {
 		this.retrievedDate = date;
 	}
+	
 	/**
-	 * 
-	 * @return
+	 * Récupère la date
+	 * @return Un objet de type String
 	 */
 	public String getRetrievedDate() {
 		return this.retrievedDate;
 	}
+	
 	/**
-	 * 
-	 * @param chaine
-	 * @return
+	 * Méthode pour mettre les chiffres sur 2digits
+	 * @param un objet de type String
+	 * @return Un objet de type String
 	 */
-
 	private String twoDigits(String chaine) {
 
 		String parsedString = chaine;
@@ -103,7 +115,10 @@ public class PopUpTask extends JDialog {
 
 
 	/**
-	 * 
+	 * Méthode pour mettre la date au bon format
+	 * @param Un objet de type int qui correspond au jour
+	 * @param Un objet de type int qui correspond au mois
+	 * @param Un objet de type int qui correspond à l'année
 	 */
 	public void setFormatedRetrievedDate(int day,int month,int year) {
 		String jour = String.valueOf(day);
@@ -116,14 +131,6 @@ public class PopUpTask extends JDialog {
 		annee = twoDigits(annee);
 
 		this.retrievedDate =jour +"-" + mois +"-" + annee ;
-	}
-
-
-	/**
-	 * 
-	 */
-	public void updateLabels() {
-
 	}
 
 
@@ -148,7 +155,6 @@ public class PopUpTask extends JDialog {
 		dateTache.setBounds(149, 70, 142, 17);
 		panel.add(dateTache);
 
-
 		detailTache = new JLabel();
 		detailTache.setBounds(149, 131, 315, 95);
 		panel.add(detailTache);
@@ -162,7 +168,6 @@ public class PopUpTask extends JDialog {
 		details.setBounds(23, 131, 63, 15);
 		panel.add(details);
 
-
 		date = new JLabel("Date : ");
 		date.setBounds(23, 70, 47, 15);
 		panel.add(date);
@@ -170,10 +175,9 @@ public class PopUpTask extends JDialog {
 		nom = new JLabel("Nom : ");
 		nom.setBounds(23, 24, 44, 15);
 		panel.add(nom);
-		
-		
+
 		int x=0,y = 0;
-		for(int i = 0; i < btnTasks.length; i++) { //TODO : remplacer btnTaks par getNBTache
+		for(int i = 0; i < btnTasks.length; i++) {
 			btnTasks[i]= new JButton ("Tâche "+(i+1));
 			btnTasks[i].setName("button_" + (i+1));
 			btnTasks[i].setBounds(x, y, 106, 25);
@@ -183,10 +187,7 @@ public class PopUpTask extends JDialog {
 				x= 0;
 				y +=33;
 			} 
-			
 			btnTasks[i].setVisible(false);
-			
-			
 		}
 
 		this.setVisible(true);

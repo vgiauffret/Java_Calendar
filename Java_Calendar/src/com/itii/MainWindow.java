@@ -140,8 +140,8 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				panelbutton.setListPanel(listpanel);
-				listpanel.checkComboBox();
+				//panelbutton.setListPanel(listpanel);
+				//listpanel.checkComboBox();
 				
 		
 			}

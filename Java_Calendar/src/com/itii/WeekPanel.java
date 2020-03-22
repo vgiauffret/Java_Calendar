@@ -14,8 +14,8 @@ import javax.swing.JScrollPane;
  *
  */
 public class WeekPanel extends JPanel{
+	/** Objet de type Jtable qui contient les tâches de la semaine*/
 	private JTable table;
-	private PopUpTask dialogTask;
 	
 	/**
 	 * Constructeur du WeekPanl qui permet d'avoir une vue du calendrier par semaine

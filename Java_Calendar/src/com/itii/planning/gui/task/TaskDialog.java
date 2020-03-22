@@ -28,14 +28,18 @@ import javax.swing.JButton;
  *
  */
 public class TaskDialog extends JDialog {
-	
+	/** */
 	private JTextField txtNomTache;
+	/** */
 	private JTextField txtDetails;
+	/** */
 	private JDatePicker calendar;
+	/** */
 	private Connexion databaseConn;
-/**
- * 
- */
+
+	/**
+	 * 
+	 */
 	public TaskDialog() {
 		databaseConn = new Connexion();
 		databaseConn.connect();

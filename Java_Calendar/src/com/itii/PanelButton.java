@@ -10,50 +10,87 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 /**
- * Correspond au panel des boutons 
+ * Correspond au panel des boutons a droite de l'application Calendrier
  * Creer, Editer, Dupliquer, Marquer, et Supprimer 
  * @author Malik && Vincent
  *
  */
 public class PanelButton extends JPanel {
 
-	JLabel lblDateDuJour;
-	private JButton btnCreer,btnEditer,btnDupliquer,btnMarquer,btnSupprimer;
+	/** Objet de type JLabel qui correspond à la date du jour		*/
+	JLabel lblDateDuJour; 
+	/** Objet de type JButton qui correspond au bouton "Creer"		*/
+	private JButton btnCreer; 
+	/** Objet de type JButton qui correspond au bouton "Editer"		*/
+	private JButton btnEditer;
+	/** Objet de type JButton qui correspond au bouton "Dupliquer"	*/
+	private JButton btnDupliquer;
+	/** Objet de type JButton qui correspond au bouton "Marquer"	*/
+	private JButton btnMarquer;
+	/** Objet de type JButton qui correspond au bouton "Supprimer"	*/
+	private JButton btnSupprimer;
+	/** Objet de type ListPanel										*/
 	private ListPanel listPanel;
 	
+	/**
+	 * Affecte l'objet listPanel 
+	 * @param Objet de type ListPanel
+	 */
 	public void setListPanel(ListPanel listpanel) {
-			this.listPanel = listpanel;
-		
+			this.listPanel = listpanel;	
 	}
 	
+	/**
+	 * Récupère l'objet listPanel
+	 * @return Objet de type ListPanel
+	 */
 	public ListPanel getListPanel() {
-		return listPanel;
-		
-		
+		return listPanel;		
 	}
+	
+	/**
+	 * Récupère l'objet bouton "Creer3
+	 * @return Objet de type JButton
+	 */
 	public JButton getCreerBtn()
 	{
 		return btnCreer;
 	}
+	/**
+	 * Récupère l'objet bouton "Editer"
+	 * @return Objet de type JButton
+	 */
 	public JButton getEditerBtn()
 	{
 		return btnEditer;
 	}
+	/**
+	 * Récupère l'objet bouton "Dupliquer"
+	 * @return Objet de type JButton
+	 */
 	public JButton getDupliquerBtn()
 	{
 		return btnDupliquer;
 	}
+	/**
+	 * Récupère l'objet bouton "Marquer"
+	 * @return Objet de type JButton
+	 */
 	public JButton getMarquerBtn()
 	{
 		return btnMarquer;
 	}
+	/**
+	 * Récupère l'objet bouton "Supprimer"
+	 * @return Objet de type JButton
+	 */
 	public JButton getSupprimerBtn()
 	{
 		return btnSupprimer;
 	}
 
 	/**
-	 * Constructeur du PanelButton qui se situe a droite de notre fenetre principale, il contient les bouttons Creer, Editer, Marquer, Dupliquer, et Supprimer
+	 * Constructeur du PanelButton qui contient les bouttons Creer, Editer, Marquer, Dupliquer, et Supprimer
 	 */
 	PanelButton(){
 		setLayout(null);
@@ -90,9 +127,6 @@ public class PanelButton extends JPanel {
 		lblDateDuJour.setBounds(20, 562, 176, 35);
 		panel_button.add(lblDateDuJour);
 
-		/**
-		 * Action lier a l'appuie sur le bouton creer qui lance une fenetre nouvelle tache
-		 */
 		this.getCreerBtn().addActionListener(new ActionListener() {
 
 			@Override
@@ -101,9 +135,6 @@ public class PanelButton extends JPanel {
 			}
 		});
 
-		/**
-		 * Action lier a l'appuie sur le bouton editer qui ouvre la tache sélectionnée et nous permet de la modifier
-		 */
 		this.getEditerBtn().addActionListener(new ActionListener() {
 
 			@Override
@@ -116,9 +147,6 @@ public class PanelButton extends JPanel {
 			}
 		});
 
-		/**
-		 * Action lier a l'appuie sur le bouton dupliquer qui nous permet d'ajouter la date sélectionner à une date ultérieur
-		 */
 		this.getDupliquerBtn().addActionListener(new ActionListener() {
 
 			@Override
@@ -129,10 +157,7 @@ public class PanelButton extends JPanel {
 				//Renvoi a la BD apres boutton OK
 			}
 		});
-		
-		/**
-		 * Action lier a l'appuie sur le bouton marquer qui nous permet de déterminer qu'une tache est fini
-		 */
+
 		this.getMarquerBtn().addActionListener(new ActionListener() {
 
 			@Override
@@ -143,9 +168,6 @@ public class PanelButton extends JPanel {
 			}
 		});
 
-		/**
-		 * Action lier a l'appuie sur le bouton supprimer qui permet de supprimer une tache
-		 */
 		this.getSupprimerBtn().addActionListener(new ActionListener() {
 
 			@Override
@@ -156,12 +178,5 @@ public class PanelButton extends JPanel {
 
 			}
 		});
-
-
 	}
 }
-
-
-
-
-
