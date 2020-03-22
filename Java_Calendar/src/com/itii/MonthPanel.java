@@ -32,14 +32,13 @@ public class MonthPanel extends JDatePanel {
 
 	private static final long serialVersionUID = 1L;
 
-	Calendar cal;
-
-	Locale locale;
-
+	//Calendar cal; 
+	//Locale locale;
+	/** Objet de type JDatePanel											*/
 	JDatePanel jdp;
-
+	/** Objet de type PopUpTask	qui permet d'appeler la fenêtre de tâche	*/
 	PopUpTask popUpTask;
-
+	/** Tableau d'objet String qui contient les differentes tâches			*/
 	String[] Tasks;
 
 	static UtilCalendarModel calendarModel = new UtilCalendarModel();
@@ -54,9 +53,6 @@ public class MonthPanel extends JDatePanel {
 		jdp = this;
 		jdp.setVisible(false);
 
-		/**
-		 * Action lier a l'appuie sur une date du calendrier
-		 */
 		this.addActionListener(new ActionListener() {
 
 
@@ -87,8 +83,6 @@ public class MonthPanel extends JDatePanel {
 
 
 				}
-
-
 
 			}
 		});
