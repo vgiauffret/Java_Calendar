@@ -214,7 +214,7 @@ public class Connexion {
 	 */
 	public void selectAll(){
 		String sql = "SELECT id, name, date, details, state FROM Tasks";
-
+		nbTask = 0;
 		try (Connection conn = this.connect();
 				Statement stmt  = conn.createStatement();
 				ResultSet rs    = stmt.executeQuery(sql)){
@@ -228,9 +228,8 @@ public class Connexion {
 						rs.getString("date") + "\t" +
 						rs.getString("details") + "\t" +
 						rs.getString("state") 
-
-
 						);
+				nbTask++ ;
 			}
 
 
@@ -270,19 +269,13 @@ public class Connexion {
 			System.out.println(e.getMessage());
 		}
 	}
-    public String selectDistinctTask(String date) {
-    	String sql = "SELECT Distinct"+FIELD_ID+"FROM Tasks WHERE date = ?" ;
-    	String task="";
-    	
-    	
-    	return task;
-    }
+
 	/**
 	 * 
 	 * @param date
 	 * @return
 	 */
-	public String[] selectTask(String date) {
+	public String[] selectTasks(String date) {
 		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
 		String[] tasks = new  String[FIELD_NUMBER]; 
 		nbTask =0;
@@ -310,6 +303,36 @@ public class Connexion {
 		return tasks;
 
 	}
+	public String[] selectTask(String date) {
+		String sql = "SELECT * FROM Tasks WHERE date = ?" ;
+		String[] tasks = new  String[10]; 
+		nbTask =0;
+		try {
+			Connection conn = this.connect();
+			PreparedStatement prdstmt = conn.prepareStatement(sql);
+			prdstmt.setString(1,date);	
+			ResultSet rs = prdstmt.executeQuery();
+
+			while (rs.next() ) {
+
+				tasks[nbTask] = String.valueOf(rs.getInt(FIELD_ID) + "\t"
+						+ rs.getString(FIELD_NAME) + "\t"
+						+ rs.getString(FIELD_DATE) + "\t" 
+						+ rs.getString(FIELD_DETAILS) + "\t"
+						+ rs.getString(FIELD_STATE));
+				nbTask++;
+
+			}
+
+		}catch(SQLException e) {
+
+
+		}
+
+		return tasks;
+
+	}
+
 
 	/**
 	 * 
@@ -330,11 +353,7 @@ public class Connexion {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-
-
 	}
-
-
 	/**
 	 * 
 	 */

@@ -28,6 +28,34 @@ public class PopUpTask extends JDialog {
 	private JLabel detailTache;
 	private JLabel dateTache;
 	private String retrievedDate;
+	private JButton [] btnTasks = new JButton[8];
+
+
+
+
+	public JButton[] getBtnTasks() {
+
+
+		return this.btnTasks;
+
+	}
+
+
+	public JLabel getNomTache() {
+
+		return this.nomTache;
+
+	}
+	public JLabel getDetailTache() {
+
+		return this.detailTache;
+
+	}
+	public JLabel getDateTache() {
+		return this.dateTache;
+		
+		
+	}
 
 
 	/**
@@ -66,7 +94,7 @@ public class PopUpTask extends JDialog {
 		}
 		return parsedString ;	
 	}
-	
+
 
 	/**
 	 * 
@@ -136,9 +164,8 @@ public class PopUpTask extends JDialog {
 		nom = new JLabel("Nom : ");
 		nom.setBounds(23, 24, 44, 15);
 		panel.add(nom);
-
-
-		JButton [] btnTasks = new JButton[8];
+		
+		
 		int x=0,y = 0;
 		for(int i = 0; i < btnTasks.length; i++) { //TODO : remplacer btnTaks par getNBTache
 			btnTasks[i]= new JButton ("Tâche "+(i+1));
@@ -151,17 +178,8 @@ public class PopUpTask extends JDialog {
 				y +=33;
 			} 
 
-			/**
-			 * Action lier a l'appuie des boutons correspondant a chaque task
-			 */
-			btnTasks[i].addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					//nomTache.setText();//Le getnomtache de la BD
-					//dateTache.setText("");//Le getdateDu de la BD
-					//details.setText("");//Le getdetails de la BD
-					JButton b = (JButton)e.getSource();
-					System.out.println(b.getName());
-				}});
+			
+			
 		}
 
 		this.setVisible(true);
