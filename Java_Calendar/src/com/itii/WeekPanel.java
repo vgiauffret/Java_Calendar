@@ -29,6 +29,7 @@ public class WeekPanel extends JPanel{
 
 		DefaultTableModel model = new DefaultTableModel(); 
 		table = new JTable(model);
+		table.setShowHorizontalLines(false);
 		table.setBounds(88, 96, 953, 529);
 		add(table);
 

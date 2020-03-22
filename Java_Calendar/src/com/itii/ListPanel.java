@@ -77,6 +77,7 @@ public class ListPanel extends JPanel {
 			}};
 			table = new JTable(model);
 			table.setEnabled(true);
+			table.setShowHorizontalLines(false);
 			table.setBounds(88, 96, 953, 529);
 			add(table);
 

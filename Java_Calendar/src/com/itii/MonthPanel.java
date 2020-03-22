@@ -63,11 +63,11 @@ public class MonthPanel extends JDatePanel {
 				//popUpTask.getConnexion().selectDate(popUpTask.getRetrievedDate());
 				Tasks = popUpTask.getConnexion().selectTask(popUpTask.getRetrievedDate());
 
-				for( int i=0;i<popUpTask.getConnexion().getNbTache();i++) {
+				for( int i=0 ; i<popUpTask.getConnexion().getNbTache();i++) {
 					StringBuilder sb = new StringBuilder(Tasks[i]);
 					String[] splittedTasks = sb.toString().split("\t");
 					
-					if(popUpTask.getConnexion().getNbTache()>=1 && i==1)
+					if(popUpTask.getConnexion().getNbTache()>=1 && i== 0 )
 					{
 						popUpTask.getNomTache().setText(splittedTasks[1]);
 						popUpTask.getDateTache().setText(splittedTasks[2]);

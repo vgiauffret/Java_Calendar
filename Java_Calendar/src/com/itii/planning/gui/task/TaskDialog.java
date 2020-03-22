@@ -23,7 +23,7 @@ import com.itii.db.Connexion;
 
 import javax.swing.JButton;
 /**
- * Correspond a la fenetre d'une creation d'une nouvelle tâche
+ * Correspond à la fenetre de création d'une nouvelle tâche
  * @author Malik et Vincent
  */
 public class TaskDialog extends JDialog {
