@@ -354,6 +354,27 @@ public class Connexion {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	
+	public void deleteTask(String nom,String date, String details) {
+		String sql = "DELETE FROM Tasks WHERE id = ? , name = ? , date = ? , details = ?";
+		try (Connection conn = this.connect();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			// set the corresponding param
+			pstmt.setString(1, nom);
+			pstmt.setString(2,date);
+			pstmt.setString(3, details);
+			// execute the delete statement
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+	}
 	/**
 	 * 
 	 */
