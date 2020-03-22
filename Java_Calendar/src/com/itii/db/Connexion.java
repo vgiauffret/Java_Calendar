@@ -372,6 +372,33 @@ public class Connexion {
 
 
 	}
+	public String[] selectAllTasks() {
+		String sql = "SELECT id, name, date, details, state FROM Tasks";
+		nbTask = 0;
+		String[] tasks = new String[10];
+		try (Connection conn = this.connect();
+				Statement stmt  = conn.createStatement();
+				ResultSet rs    = stmt.executeQuery(sql)){
+
+
+
+			// loop through the result set
+			while (rs.next()) {
+				tasks[nbTask] = String.valueOf(rs.getInt(FIELD_ID))+"\t"+
+				rs.getString(FIELD_NAME)+"\t"+
+				rs.getString(FIELD_DATE)+ "\t"+
+				rs.getString(FIELD_DETAILS)+"\t"+
+				rs.getString(FIELD_STATE);
+
+				nbTask++ ;
+			}
+
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return tasks;
+	}
 
 
 
