@@ -33,15 +33,15 @@ public class WeekPanel extends JPanel{
 		add(table);
 
 		JLabel lblSemained = new JLabel("Semaine %d");
-		lblSemained.setBounds(206, 12, 112, 25);
+		lblSemained.setBounds(214, 12, 130, 25);
 		add(lblSemained);
 
-		JButton btnSemained = new JButton("Semaine %d");
+		JButton btnSemained = new JButton("Précédente");
 		btnSemained.setBounds(51, 12, 130, 25);
 		add(btnSemained);
 
-		JButton button = new JButton("Semaine %d");
-		button.setBounds(324, 12, 130, 25);
+		JButton button = new JButton("Suivante");
+		button.setBounds(345, 12, 130, 25);
 		add(button);
 
 		JScrollPane scrollBar = new JScrollPane(table);
