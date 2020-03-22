@@ -10,7 +10,8 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 /**
- * Correspond au panel des boutons Creer, Editer, Dupliquer, Marquer, et Supprimer 
+ * Correspond au panel des boutons 
+ * Creer, Editer, Dupliquer, Marquer, et Supprimer 
  * @author Malik && Vincent
  *
  */
@@ -18,6 +19,18 @@ public class PanelButton extends JPanel {
 
 	JLabel lblDateDuJour;
 	private JButton btnCreer,btnEditer,btnDupliquer,btnMarquer,btnSupprimer;
+	private ListPanel listPanel;
+	
+	public void setListPanel(ListPanel listpanel) {
+			this.listPanel = listpanel;
+		
+	}
+	
+	public ListPanel getListPanel() {
+		return listPanel;
+		
+		
+	}
 	public JButton getCreerBtn()
 	{
 		return btnCreer;
@@ -137,8 +150,9 @@ public class PanelButton extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//Identifier la tache selectionner
-				//Supprimer de la BD
+				//panelbutton.setListPanel(listpanel);
+				//getListPanel().checkComboBox();
+				
 
 			}
 		});

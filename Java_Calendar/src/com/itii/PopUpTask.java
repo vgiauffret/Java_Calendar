@@ -32,7 +32,10 @@ public class PopUpTask extends JDialog {
 
 
 
-
+/**
+ * 
+ * @return tableau de JButton correspondant chacun à une tâche différente
+ */
 	public JButton[] getBtnTasks() {
 
 
@@ -40,7 +43,10 @@ public class PopUpTask extends JDialog {
 
 	}
 
-
+/**
+ * 
+ * @return
+ */
 	public JLabel getNomTache() {
 
 		return this.nomTache;

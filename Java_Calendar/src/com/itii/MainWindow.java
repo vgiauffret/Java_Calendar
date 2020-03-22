@@ -50,7 +50,7 @@ public class MainWindow extends JFrame {
 		mMainPanel.setBounds(0, 0, 1190, 637);
 		panelbutton = new PanelButton();
 		panelbutton.setBounds(1188, 0, 200, 637);
-		new ListPanel();
+		 //new ListPanel();
 		fichier = new JMenu("Fichier");
 		edition = new JMenu("Edition");
 		creer = new JMenuItem("Créer");
@@ -71,6 +71,8 @@ public class MainWindow extends JFrame {
 		vue.add(Month);vue.add(Week);vue.add(List);
 
 		listpanel = new ListPanel();
+		
+		
 		listpanel.setBounds(0, 30, 1190, 637);
 		this.add(listpanel);
 		weekPanel = new WeekPanel();
@@ -79,6 +81,8 @@ public class MainWindow extends JFrame {
 		monthPanel = new MonthPanel();
 		monthPanel.setBounds(0, 30, 1190, 637);
 		this.add(monthPanel);
+		//panelbutton.setListPanel(listpanel);
+		
 
 		/**
 		 * Action lier a l'appuie sur le bouton créer
@@ -136,7 +140,10 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-
+				panelbutton.setListPanel(listpanel);
+				listpanel.checkComboBox();
+				
+		
 			}
 		});
 
@@ -147,7 +154,7 @@ public class MainWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				mMainPanel.comboBox.setSelectedItem("Month");
+				mMainPanel.getComboBox().setSelectedItem("Month");
 
 			}
 		});
@@ -159,7 +166,7 @@ public class MainWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				mMainPanel.comboBox.setSelectedItem("Week"); 				
+				mMainPanel.getComboBox().setSelectedItem("Week"); 				
 			}
 		});
 
@@ -170,7 +177,7 @@ public class MainWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				mMainPanel.comboBox.setSelectedItem("List");                
+				mMainPanel.getComboBox().setSelectedItem("List");                
 			}
 		});
 

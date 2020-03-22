@@ -8,7 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 /**
- * Correspond a la connexion a la base de donnés
+ * <ul>Classe permettant de se connecter et de manipuler la base de donnée : 
+ * <li>Ajouter une tâche</li>
+ * <li>Modifier une tâche</li>
+ * <li>Supprimer une tâche</li>
+ * </ul>
  * @author Malik && Vincent
  *
  */
@@ -107,7 +111,7 @@ public class Connexion {
 
 	/**
 	 * 
-	 * @return
+	 * @return objet connection permettant de se connecter à la base
 	 */
 
 	public Connection connect() {
@@ -128,10 +132,10 @@ public class Connexion {
 
 	/**
 	 * 
-	 * @param taskName
-	 * @param date
-	 * @param description
-	 * @param state
+	 * @param taskName : nom de la tache à ajouter
+	 * @param date : date due de la tache
+	 * @param description : description détaillé de la tâche
+	 * @param state : false si la tâche n'est pas achevé, vrai sinon.
 	 * @throws SQLException
 	 */
 	public void addTask(String taskName, String date, String description,String state ) throws SQLException {
@@ -153,7 +157,7 @@ public class Connexion {
 
 	/**
 	 * 
-	 * @throws SQLException
+	 * @throws SQLException exception jetée si il y a un problème de requête ou de connexion avec la base
 	 */
 	private void createTable() throws SQLException {
 
@@ -176,7 +180,7 @@ public class Connexion {
 	}
 
 	/**
-	 * 
+	 * Lecture de la table créée
 	 */
 	public void readDatabase() {
 
@@ -210,7 +214,7 @@ public class Connexion {
 	}
 
 	/**
-	 * 
+	 *  Affiche toutes les tâche dans la console(méthode de debug)
 	 */
 	public void selectAll(){
 		String sql = "SELECT id, name, date, details, state FROM Tasks";
@@ -354,8 +358,13 @@ public class Connexion {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	
+
+/**
+ * 
+ * @param nom
+ * @param date
+ * @param details
+ */
 	public void deleteTask(String nom,String date, String details) {
 		String sql = "DELETE FROM Tasks WHERE id = ? , name = ? , date = ? , details = ?";
 		try (Connection conn = this.connect();
@@ -371,9 +380,9 @@ public class Connexion {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		
-		
-		
+
+
+
 	}
 	/**
 	 * 
@@ -393,6 +402,10 @@ public class Connexion {
 
 
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public String[] selectAllTasks() {
 		String sql = "SELECT id, name, date, details, state FROM Tasks";
 		nbTask = 0;
@@ -406,10 +419,10 @@ public class Connexion {
 			// loop through the result set
 			while (rs.next()) {
 				tasks[nbTask] = String.valueOf(rs.getInt(FIELD_ID))+"\t"+
-				rs.getString(FIELD_NAME)+"\t"+
-				rs.getString(FIELD_DATE)+ "\t"+
-				rs.getString(FIELD_DETAILS)+"\t"+
-				rs.getString(FIELD_STATE);
+						rs.getString(FIELD_NAME)+"\t"+
+						rs.getString(FIELD_DATE)+ "\t"+
+						rs.getString(FIELD_DETAILS)+"\t"+
+						rs.getString(FIELD_STATE);
 
 				nbTask++ ;
 			}
@@ -421,6 +434,24 @@ public class Connexion {
 		return tasks;
 	}
 
+/**
+ * 
+ * @param nom
+ * @param date
+ * @param details
+ */
+	public void updateTask(String nom,String date, String details) {
+		String sql = "UPDATE Tasks SET state = 'true' WHERE name = ? , date = ? , details = ?";
+		try (Connection conn = this.connect();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, nom);
+			pstmt.setString(2,date);
+			pstmt.setString(3, details);
+			// execute the update statement
+			pstmt.executeUpdate();
 
-
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}		
+	}
 }

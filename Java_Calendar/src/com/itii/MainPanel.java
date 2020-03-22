@@ -15,14 +15,20 @@ public class MainPanel extends JPanel {
 
 	private String[] choiceList;
 	JComboBox<String> mPanelList;
-	public JComboBox comboBox;
+	private JComboBox comboBox;
 	private ListPanel listpanel;
 	private MonthPanel monthPanel;
 	private WeekPanel weekPanel;
 	public JPanel panel;
+	
+	public JComboBox getComboBox() {
+	
+		return comboBox;
+	}
 	/**
 	 * Constructeur de Mainpanel qui se trouve au centre de la fenetre MainWindow
 	 */
+	
 	MainPanel(){
 
 		this.setSize(1190, 640);
