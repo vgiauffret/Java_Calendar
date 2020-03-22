@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 /**
  * Correspond à la fenetre pour afficher les tâches du jour
- * @author Malik && Vincent
+ * @author Malik et Vincent
  *
  */
 public class PopUpTask extends JDialog {
@@ -64,12 +64,8 @@ public class PopUpTask extends JDialog {
 	 */
 	public JLabel getDetailTache() {
 		return this.detailTache;
-
-
-	public JLabel getDetailTache() {
-		return this.detailTache;
 	}
-	
+		
 	/**
 	 * Récupère la date de la tâche
 	 * @return Objet de type JLabel
@@ -88,7 +84,7 @@ public class PopUpTask extends JDialog {
 
 	/**
 	 * Affecte une date 
-	 * @param Un objet de type String
+	 * @param date : Objet de type String
 	 */
 	public void setRetrievedDate(String date) {
 		this.retrievedDate = date;
@@ -119,9 +115,9 @@ public class PopUpTask extends JDialog {
 
 	/**
 	 * Méthode pour mettre la date au bon format
-	 * @param Un objet de type int qui correspond au jour
-	 * @param Un objet de type int qui correspond au mois
-	 * @param Un objet de type int qui correspond à l'année
+	 * @param day : Objet de type int qui correspond au jour
+	 * @param month : Objet de type int qui correspond au mois
+	 * @param year : Objet de type int qui correspond à l'année
 	 */
 	public void setFormatedRetrievedDate(int day,int month,int year) {
 		String jour = String.valueOf(day);

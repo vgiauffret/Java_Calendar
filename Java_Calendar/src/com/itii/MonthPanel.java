@@ -24,7 +24,7 @@ import javax.swing.JScrollBar;
 
 /**
  * Correspond a la vue du calendrier par mois
- * @author Malik & Vincent
+ * @author Malik et Vincent
  *
  */
 public class MonthPanel extends JDatePanel {

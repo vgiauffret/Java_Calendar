@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 /**
  * Fenêtre principal du calendrier implémentant la pattern Singleton : Un seul objet MainWindow instancié dans tout le programme
- * @author Malik & Vincent
+ * @author Malik et Vincent
  *
  */
 public class MainWindow extends JFrame {

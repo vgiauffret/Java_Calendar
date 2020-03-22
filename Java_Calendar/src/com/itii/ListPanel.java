@@ -16,7 +16,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 /**
  * Correspond a la vue sous forme de liste des taches
- * @author Malik && Vincent
+ * @author Malik et Vincent
  *
  */
 public class ListPanel extends JPanel {

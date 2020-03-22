@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Correspond au panel des boutons a droite de l'application Calendrier
  * Creer, Editer, Dupliquer, Marquer, et Supprimer 
- * @author Malik && Vincent
+ * @author Malik et Vincent
  *
  */
 public class PanelButton extends JPanel {
@@ -34,7 +34,7 @@ public class PanelButton extends JPanel {
 	
 	/**
 	 * Affecte l'objet listPanel 
-	 * @param Objet de type ListPanel
+	 * @param listpanel : Objet De type ListPanel
 	 */
 	public void setListPanel(ListPanel listpanel) {
 			this.listPanel = listpanel;	

@@ -14,7 +14,7 @@ import java.sql.Statement;
  * <li>Modifier une tâche</li>
  * <li>Supprimer une tâche</li>
  * </ul>
- * @author Malik && Vincent
+ * @author Malik et Vincent
  *
  */
 public class Connexion {

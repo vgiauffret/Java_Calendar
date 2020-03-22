@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 /**
  * Correspond a la fenetre qui se trouve au centre de la fenetre Mainwindow et qui prend la vue list, month ou week
- * @author Malik && Vincent
+ * @author Malik et Vincent
  *
  */
 public class MainPanel extends JPanel {                  

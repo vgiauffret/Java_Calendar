@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 
 /**
  * Correspond a la vue du calendrier par semaine
- * @author Malik && Vincent
+ * @author Malik et Vincent
  *
  */
 public class WeekPanel extends JPanel{

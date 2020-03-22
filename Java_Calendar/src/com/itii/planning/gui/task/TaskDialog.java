@@ -24,7 +24,7 @@ import com.itii.db.Connexion;
 import javax.swing.JButton;
 /**
  * Correspond a la fenetre d'une creation d'une nouvelle tâche
- * @author Malik && Vincent
+ * @author Malik et Vincent
  *
  */
 public class TaskDialog extends JDialog {

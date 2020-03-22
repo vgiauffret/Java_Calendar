@@ -6,7 +6,7 @@ import com.itii.db.*;
 
 /**
  * Classe de lancement du Calendrier (point de départ de l'application)
- * @author malik & Vincent
+ * @author Malik et Vincent
  *
  */
 
